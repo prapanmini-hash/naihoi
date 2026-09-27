@@ -1,0 +1,1475 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>นายฮ้อย | แพลตฟอร์มติวสอบตำรวจ</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@400;500;600;700;900&family=Sarabun:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{--br:#c2410c;--br2:#9a3412;--br3:#ea580c;--lt:#fff7ed;--lt2:#ffedd5;--bd:#fed7aa;--tx:#292524;--mu:#78716c;--ok:#15803d;--bad:#b91c1c;--wn:#b45309;--bg:#ffffff}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Noto Sans Thai',sans-serif;background:var(--bg);color:var(--tx);line-height:1.62;overflow-x:hidden}
+.wm{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden}
+.wm span{position:absolute;font-size:11px;font-weight:700;color:rgba(194,65,12,.032);white-space:nowrap;transform:rotate(-22deg)}
+header,main,footer{position:relative;z-index:1}
+svg.art{vertical-align:middle}
+.topbar{background:var(--br);color:#fff;font-size:12.5px;text-align:center;padding:7px 14px;letter-spacing:.3px;font-weight:600}
+header{background:#fff;position:sticky;top:0;z-index:50;border-bottom:1px solid var(--bd);box-shadow:0 2px 14px rgba(194,65,12,.06)}
+.nav{max-width:1180px;margin:auto;display:flex;align-items:center;gap:16px;padding:12px 18px;flex-wrap:wrap}
+.logo{display:flex;align-items:center;gap:9px;font-weight:900;font-size:20px;cursor:pointer;color:var(--br);letter-spacing:.2px}
+.nav a{color:#57534e;text-decoration:none;font-size:14.3px;font-weight:600;cursor:pointer;padding:5px 2px;border-bottom:2px solid transparent;white-space:nowrap}
+.nav a:hover{color:var(--br)}
+.nav a.active{color:var(--br);border-color:var(--br3)}
+.sp{flex:1}
+.pill{background:var(--lt2);border:1px solid var(--bd);color:var(--br);padding:3px 11px;border-radius:99px;font-size:11.5px;font-weight:700}
+.trk{background:#fff;color:var(--br);border:1.5px solid var(--bd);border-radius:9px;padding:6px 11px;font-family:inherit;font-weight:700;font-size:12.5px;cursor:pointer}
+main{max-width:1180px;margin:auto;padding:24px 18px 60px}
+.card{background:#fff;border:1px solid var(--bd);border-radius:16px;padding:20px;box-shadow:0 2px 10px rgba(194,65,12,.05)}
+.grid{display:grid;gap:16px}.g2{grid-template-columns:repeat(auto-fit,minmax(290px,1fr))}.g3{grid-template-columns:repeat(auto-fit,minmax(225px,1fr))}.g4{grid-template-columns:repeat(auto-fit,minmax(172px,1fr))}
+h1{font-size:30px;font-weight:900;line-height:1.3;color:var(--br2)}
+h2{font-size:20px;font-weight:800;margin-bottom:11px;color:var(--br2)}
+h3{font-size:16px;font-weight:700;color:var(--tx)}
+.mu{color:var(--mu);font-size:13.5px}
+.sec-t{display:flex;align-items:center;gap:11px;margin:30px 0 14px}
+.sec-t:before{content:"";width:5px;height:24px;background:linear-gradient(var(--br3),var(--br));border-radius:3px}
+.sec-t h2{margin:0}
+.btn{border:0;border-radius:10px;padding:11px 20px;font-family:inherit;font-size:14.5px;font-weight:700;cursor:pointer;transition:.17s}
+.btn:hover{transform:translateY(-1px)}.btn:disabled{opacity:.45;cursor:not-allowed;transform:none}
+.btn-p{background:var(--br3);color:#fff;box-shadow:0 4px 14px rgba(234,88,12,.28)}
+.btn-p:hover{background:var(--br)}
+.btn-d{background:var(--br2);color:#fff}
+.btn-o{background:#fff;color:var(--br);border:1.7px solid var(--br3)}
+.btn-o:hover{background:var(--lt)}
+.btn-g2{background:#fff;color:#3c4043;border:1.5px solid #dadce0;display:flex;align-items:center;justify-content:center;gap:10px}
+.btn-r{background:#fee2e2;color:var(--bad)}.btn-g{background:#dcfce7;color:var(--ok)}
+.btn-s{padding:7px 13px;font-size:12.8px;border-radius:8px}
+/* hero slider */
+.hero{background:linear-gradient(160deg,var(--lt) 0%,#ffe8d6 100%);border-radius:0;margin:-24px -18px 0;padding:34px 18px 40px}
+.hero-in{max-width:1180px;margin:auto;display:grid;grid-template-columns:1.05fr 1fr;gap:34px;align-items:center}
+@media(max-width:900px){.hero-in{grid-template-columns:1fr}}
+.kicker{font-size:12.5px;font-weight:800;letter-spacing:1.6px;color:var(--br);text-transform:uppercase;margin-bottom:12px}
+.hero h1{font-size:42px;line-height:1.16;color:#1c1917;font-weight:900}
+.hero h1 em{font-style:italic;color:var(--br)}
+.hero p{color:#57534e;font-size:16px;margin:16px 0 22px;max-width:520px}
+.hero .btns{display:flex;gap:12px;flex-wrap:wrap}
+.hero small{display:block;color:var(--mu);font-size:12.5px;margin-top:14px}
+.sld{border-radius:16px;overflow:hidden;border:1px solid var(--bd);background:#fff;position:relative;box-shadow:0 14px 40px rgba(194,65,12,.15)}
+.sl{display:none}.sl.on{display:block;animation:fd .5s}
+@keyframes fd{from{opacity:.2}to{opacity:1}}
+.sl img,.sl video,.sl iframe{width:100%;display:block;border:0;aspect-ratio:16/10.5;object-fit:cover;background:#1c0d08}
+.sl-empty{aspect-ratio:16/10.5;display:grid;place-items:center;background:linear-gradient(140deg,var(--br2),var(--br3));color:#ffedd5;text-align:center;padding:22px}
+.sl-cap{position:absolute;left:0;right:0;bottom:0;padding:18px 20px;background:linear-gradient(transparent,rgba(40,12,4,.55) 40%,rgba(40,12,4,.9));color:#fff}
+.sl-cap b{display:block;font-size:17px;margin-bottom:3px}
+.sl-cap span{font-size:12.8px;color:#ffe4cf}
+.dots{position:absolute;right:14px;bottom:13px;display:flex;gap:6px;z-index:5}
+.dots i{width:8px;height:8px;border-radius:99px;background:rgba(255,255,255,.5);cursor:pointer;transition:.2s}
+.dots i.on{background:#fff;width:22px}
+.sarw{position:absolute;top:50%;transform:translateY(-50%);width:34px;height:34px;border-radius:50%;background:rgba(255,255,255,.9);color:var(--br);border:0;font-size:17px;cursor:pointer;z-index:5;display:grid;place-items:center;box-shadow:0 2px 8px rgba(0,0,0,.18)}
+.sarw:hover{background:var(--br3);color:#fff}
+.sarw.l{left:11px}.sarw.r{right:11px}
+/* countdown */
+.cdw{display:grid;grid-template-columns:repeat(auto-fit,minmax(245px,1fr));gap:14px}
+.cdc{background:#fff;border:1px solid var(--bd);border-radius:15px;padding:16px;box-shadow:0 3px 12px rgba(194,65,12,.06)}
+.cdc .nm{font-size:14px;font-weight:800;color:var(--br2);display:flex;align-items:center;gap:8px}
+.cdc .dt{font-size:11.8px;color:var(--mu);margin:3px 0 11px}
+.cdn{display:flex;gap:6px}
+.cdn div{flex:1;background:var(--lt);border:1px solid var(--bd);border-radius:10px;padding:7px 2px;text-align:center}
+.cdn b{display:block;font-size:20px;font-weight:900;color:var(--br);font-variant-numeric:tabular-nums}
+.cdn span{font-size:10.5px;color:var(--mu)}
+.cd-over{background:#dcfce7;color:var(--ok);text-align:center;padding:11px;border-radius:10px;font-weight:700}
+/* stats */
+.stbar{background:linear-gradient(135deg,var(--br2),var(--br3));border-radius:18px;padding:26px 22px;display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:18px;color:#fff;position:relative;overflow:hidden;box-shadow:0 10px 30px rgba(194,65,12,.22)}
+.stbar:after{content:"";position:absolute;right:-70px;top:-70px;width:230px;height:230px;border-radius:50%;background:rgba(255,255,255,.07)}
+.stc{text-align:center;position:relative}
+.stc b{display:block;font-size:33px;font-weight:900;line-height:1.15;color:#fff}
+.stc span{font-size:13.5px;color:#ffe4cf}
+.stc em{font-style:normal;font-size:11.5px;color:#ffcfae;display:block;margin-top:3px}
+/* misc */
+.sj{cursor:pointer;transition:.19s;border-top:4px solid var(--br3)}
+.sj:hover{transform:translateY(-4px);box-shadow:0 12px 26px rgba(194,65,12,.14)}
+.chip{display:inline-block;background:var(--lt2);color:var(--br);border-radius:99px;padding:3px 10px;font-size:11.4px;font-weight:700;margin:2px 4px 2px 0}
+.chip.ok{background:#dcfce7;color:var(--ok)}.chip.bad{background:#fee2e2;color:var(--bad)}.chip.w{background:#fef3c7;color:var(--wn)}
+.chip.gy{background:#f5f5f4;color:var(--mu)}
+.bar{height:7px;background:var(--lt2);border-radius:99px;overflow:hidden;margin-top:7px}
+.bar i{display:block;height:100%;background:linear-gradient(90deg,var(--br),var(--br3))}
+.lk{position:relative;opacity:.72}.lk:after{content:"🔒";position:absolute;top:12px;right:14px;font-size:16px}
+.bkc{display:flex;gap:14px;background:#fff;border:1px solid var(--bd);border-radius:15px;padding:15px;cursor:pointer;transition:.19s}
+.bkc:hover{transform:translateY(-3px);box-shadow:0 10px 24px rgba(194,65,12,.13);border-color:var(--br3)}
+.bkc img{width:86px;height:116px;object-fit:cover;border-radius:9px;border:1px solid var(--bd);flex-shrink:0;background:var(--lt2)}
+.bkc h4{font-size:15.3px;font-weight:800;color:var(--br2);margin-bottom:4px;line-height:1.35}
+.cta{background:linear-gradient(135deg,var(--br2),var(--br3));border-radius:20px;padding:40px 24px;text-align:center;color:#fff;margin-top:34px;box-shadow:0 12px 32px rgba(194,65,12,.25)}
+.cta h2{font-size:29px;color:#fff;margin-bottom:9px}
+.cta p{color:#ffe4cf;margin-bottom:20px;font-size:15.5px}
+.cta .btn-p{background:#fff;color:var(--br)}
+.cta .btn-p:hover{background:var(--lt2)}
+/* exam */
+.eb{position:sticky;top:60px;z-index:40;background:linear-gradient(135deg,var(--br2),var(--br3));color:#fff;border-radius:14px;padding:12px 17px;display:flex;align-items:center;gap:13px;flex-wrap:wrap;margin-bottom:16px}
+.tm{font-weight:900;font-size:19px;color:#fff;font-variant-numeric:tabular-nums}
+.tm.dg{color:#fecaca;animation:bk 1s infinite}@keyframes bk{50%{opacity:.35}}
+.exl{display:grid;grid-template-columns:1fr 296px;gap:16px;align-items:start}
+@media(max-width:920px){.exl{grid-template-columns:1fr}}
+.qb{border:1px solid var(--bd);border-radius:14px;padding:18px;background:#fff;margin-bottom:13px}
+.qn{font-size:12px;font-weight:800;color:var(--br3)}
+.qt{font-size:16.2px;font-weight:600;margin:8px 0 14px;white-space:pre-wrap}
+.op{display:flex;gap:10px;align-items:flex-start;border:1.6px solid var(--bd);border-radius:11px;padding:10px 14px;margin-bottom:8px;cursor:pointer;font-size:14.6px;transition:.12s}
+.op:hover{border-color:var(--br3);background:var(--lt)}
+.op.se{border-color:var(--br3);background:var(--lt2)}
+.op.ri{border-color:var(--ok);background:#dcfce7}.op.wr{border-color:var(--bad);background:#fee2e2}
+.op b{min-width:22px;height:22px;border-radius:7px;background:var(--lt2);display:grid;place-items:center;font-size:11.5px;flex-shrink:0;margin-top:1px;color:var(--br)}
+.ex{border-left:4px solid var(--br3);background:var(--lt);padding:10px 14px;border-radius:0 10px 10px 0;font-size:13.6px;margin-top:10px}
+.omr{background:#fff;border:2px solid var(--br3);border-radius:13px;padding:14px;position:sticky;top:124px;box-shadow:0 6px 20px rgba(194,65,12,.1)}
+.omr-h{text-align:center;border-bottom:2px solid var(--br3);padding-bottom:9px;margin-bottom:10px}
+.omr-h .t{font-weight:900;color:var(--br);font-size:16px}
+.omr-h .s{font-size:11.4px;color:var(--mu);line-height:1.55;margin-top:4px}
+.omr-c{display:flex;gap:4px;font-size:10.5px;color:var(--mu);justify-content:flex-end;padding-right:4px;margin-bottom:4px}
+.omr-c span{width:25px;text-align:center;font-weight:700}
+.omr-l{max-height:calc(100vh - 320px);overflow-y:auto;padding-right:4px}
+.omr-r{display:flex;align-items:center;gap:6px;padding:4px 0;border-bottom:1px dotted var(--bd)}
+.omr-r.now{background:var(--lt2);border-radius:7px}
+.omr-r .no{width:27px;font-size:11.8px;font-weight:700;color:var(--mu);text-align:right;cursor:pointer}
+.bb{width:25px;height:25px;border-radius:50%;border:1.7px solid var(--br3);display:grid;place-items:center;font-size:10px;font-weight:700;color:var(--br);cursor:pointer;background:#fff;flex-shrink:0}
+.bb:hover{background:var(--lt2)}
+.bb.f{background:var(--br3);color:#fff;border-color:var(--br);box-shadow:inset 0 0 0 2px #fff,inset 0 0 0 3.5px var(--br3)}
+.omr-ft{border-top:2px solid var(--br3);margin-top:9px;padding-top:8px;font-size:11.5px;color:var(--mu);text-align:center}
+table{width:100%;border-collapse:collapse;font-size:14px}
+th,td{padding:9px 11px;border-bottom:1px solid var(--bd);text-align:left;vertical-align:middle}
+th{background:var(--lt);font-weight:700;font-size:12.5px;color:var(--br2)}
+.tw{overflow-x:auto;-webkit-overflow-scrolling:touch}
+/* result */
+.rs{background:#fff;border:1px solid #cbd5e1;border-radius:10px;overflow:hidden;max-width:930px;margin:auto;font-family:'Sarabun',sans-serif;box-shadow:0 8px 28px rgba(0,0,0,.09)}
+.rs-h{background:linear-gradient(135deg,var(--br2),var(--br3));color:#fff;padding:13px 18px;font-weight:700;font-size:18px;text-align:center}
+.rs-b{padding:22px 20px}
+.rs-i{text-align:center;font-size:15px;line-height:2.1;margin:0 auto 18px;max-width:540px}
+.rs-i div{display:flex;justify-content:center;gap:12px}
+.rs-i span{color:#57534e}.rs-i b{color:#111}
+.rt{border-collapse:collapse;width:100%;font-size:13px;font-family:'Sarabun',sans-serif}
+.rt th,.rt td{border:1px solid #94a3b8;padding:7px 4px;text-align:center}
+.rt th{background:#f8fafc;color:#1e3a8a;font-weight:700;font-size:12.2px;line-height:1.3}
+.rt th.g{color:var(--ok)}.rt th.r{color:var(--bad)}
+.rt td{font-size:14.5px;font-weight:600;color:#222}
+.vd{color:var(--bad);font-weight:700;font-size:12.8px;line-height:1.45}
+.vd.pass{color:var(--ok)}
+/* pricing */
+.pk{background:#fff;border:2px solid var(--bd);border-radius:18px;padding:26px 22px;text-align:center;position:relative;transition:.2s}
+.pk:hover{transform:translateY(-4px);box-shadow:0 14px 32px rgba(194,65,12,.14)}
+.pk.best{border-color:var(--br3);box-shadow:0 12px 32px rgba(234,88,12,.18)}
+.pk .tag{position:absolute;top:-13px;left:50%;transform:translateX(-50%);background:var(--br3);color:#fff;font-size:12px;font-weight:800;padding:4px 17px;border-radius:99px;white-space:nowrap}
+.pk .old{text-decoration:line-through;color:#a8a29e;font-size:16px}
+.pk .now{font-size:38px;font-weight:900;color:var(--br);line-height:1.1}
+.pk ul{list-style:none;text-align:left;margin:16px 0;font-size:14px}
+.pk li{padding:5px 0 5px 24px;position:relative}
+.pk li:before{content:"✓";position:absolute;left:0;color:var(--ok);font-weight:900}
+.gate{max-width:580px;margin:30px auto}
+.gcard{background:#fff;border-radius:20px;padding:30px 24px;text-align:center;border-top:6px solid var(--br3);box-shadow:0 14px 38px rgba(194,65,12,.13)}
+.warn{background:#fffbeb;border:1.5px solid var(--wn);color:#92400e;border-radius:13px;padding:12px 16px;margin-bottom:16px;font-size:14px;display:flex;gap:10px;align-items:center}
+.mask{position:fixed;inset:0;background:rgba(41,25,20,.6);display:grid;place-items:center;z-index:100;padding:16px;overflow:auto;backdrop-filter:blur(2px)}
+.md{background:#fff;border-radius:18px;padding:25px;max-width:540px;width:100%;max-height:92vh;overflow:auto;border-top:6px solid var(--br3);box-shadow:0 20px 50px rgba(0,0,0,.2)}
+.md.w{max-width:860px}
+input,select,textarea{width:100%;padding:10px 13px;border:1.6px solid var(--bd);border-radius:10px;font-family:inherit;font-size:14.5px;margin-top:5px;background:#fff}
+input:focus,select:focus,textarea:focus{outline:0;border-color:var(--br3)}
+textarea{min-height:85px;resize:vertical}
+label{font-size:13px;font-weight:700;display:block;margin-top:12px;color:#44403c}
+.row2{display:flex;gap:10px}.row2>div{flex:1}
+.tst{position:fixed;bottom:22px;left:50%;transform:translateX(-50%);background:var(--br2);color:#fff;padding:12px 22px;border-radius:12px;z-index:200;font-size:14px;box-shadow:0 10px 28px rgba(0,0,0,.25);max-width:90vw;text-align:center}
+.ab{display:flex;gap:7px;flex-wrap:wrap;margin-bottom:18px}
+.ab button{border:1.5px solid var(--bd);background:#fff;border-radius:10px;padding:8px 14px;font-family:inherit;font-size:13.4px;font-weight:700;cursor:pointer;color:#57534e}
+.ab button.on{background:var(--br3);color:#fff;border-color:var(--br3)}
+.seg{display:flex;border:2px solid var(--br3);border-radius:12px;overflow:hidden;margin-bottom:14px}
+.seg button{flex:1;border:0;background:#fff;color:var(--br);padding:11px;font-family:inherit;font-size:14.3px;font-weight:800;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px}
+.seg button.on{background:var(--br3);color:#fff}
+.kpi{background:var(--lt);border:1px solid var(--bd);border-radius:14px;padding:16px}
+.kpi b{display:block;font-size:26px;font-weight:900;color:var(--br)}
+code{background:var(--lt2);padding:2px 6px;border-radius:5px;font-size:12.5px;color:var(--br)}
+.dv{display:flex;align-items:center;gap:10px;border:1px solid var(--bd);border-radius:11px;padding:10px 12px;margin-top:7px;font-size:13.4px}
+.sw{display:flex;align-items:center;gap:9px;margin-top:6px}
+.sw input[type=color]{width:48px;height:36px;padding:2px;margin:0}
+.slip{width:56px;height:56px;object-fit:cover;border-radius:8px;border:1px solid var(--bd);cursor:pointer}
+footer{background:#1c1917;color:#d6d3d1;padding:34px 18px 24px;margin-top:44px;border-top:4px solid var(--br3)}
+.fin{max-width:1180px;margin:auto;text-align:center}
+.soc{display:flex;justify-content:center;gap:14px;margin:14px 0}
+.soc a{width:44px;height:44px;border-radius:50%;display:grid;place-items:center;background:rgba(255,255,255,.07);border:1px solid rgba(254,215,170,.25);transition:.2s;text-decoration:none}
+.soc a:hover{background:var(--br3);transform:translateY(-3px)}
+.soc svg{width:21px;height:21px;fill:#fed7aa}
+.soc a:hover svg{fill:#fff}
+.admdot{display:inline-block;width:9px;height:9px;border-radius:50%;background:#44403c;cursor:pointer;margin-top:14px;opacity:.5}
+@media(max-width:700px){.hero h1{font-size:29px}.nav a{font-size:12.8px}h1{font-size:23px}}
+@media print{header,footer,.np,.topbar{display:none!important}main{padding:0}.rs{box-shadow:none;border:0}.wm{display:none}}
+</style>
+</head>
+<body>
+<div class="wm" id="wm"></div>
+<div class="topbar" id="tb"></div>
+<header><div class="nav" id="nav"></div></header>
+<main id="app"></main>
+<footer><div class="fin" id="ft"></div></footer>
+<div id="mh"></div>
+<script>
+/* ============ ART ============ */
+const ART={
+cop:s=>`<svg class="art" viewBox="0 0 64 64" width="${s}" height="${s}"><circle cx="32" cy="32" r="31" fill="#ffedd5"/><path d="M6 63c2-13 13-20 26-20s24 7 26 20z" fill="#c2410c"/><path d="M32 43l-5 20h10z" fill="#fff"/><circle cx="32" cy="30" r="15" fill="#fed7aa"/><path d="M15 24c0-10 7-16.5 17-16.5S49 14 49 24z" fill="#c2410c"/><rect x="13" y="22.5" width="38" height="5" rx="2.5" fill="#9a3412"/><rect x="11" y="26.5" width="42" height="4.5" rx="2.2" fill="#7c2d12"/><circle cx="32" cy="17" r="5.4" fill="#fff"/><path d="M32 12.6l1.4 3.1 3.4.3-2.6 2.2.8 3.3-3-1.7-3 1.7.8-3.3-2.6-2.2 3.4-.3z" fill="#ea580c"/><circle cx="26.5" cy="33" r="2.3" fill="#44403c"/><circle cx="37.5" cy="33" r="2.3" fill="#44403c"/><path d="M27 39.5q5 4.5 10 0" stroke="#a8674a" stroke-width="2.1" fill="none" stroke-linecap="round"/></svg>`,
+sgt:s=>`<svg class="art" viewBox="0 0 64 64" width="${s}" height="${s}"><circle cx="32" cy="32" r="31" fill="#fff7ed"/><path d="M6 63c2-13 13-20 26-20s24 7 26 20z" fill="#ea580c"/><path d="M32 43l-5 20h10z" fill="#fff"/><circle cx="32" cy="30" r="15" fill="#fed7aa"/><path d="M14 23c2-9 9-15 18-15s16 6 18 15z" fill="#ea580c"/><rect x="11" y="22" width="42" height="5.6" rx="2.8" fill="#c2410c"/><path d="M26 12h12l-2 8H28z" fill="#fff"/><circle cx="26.5" cy="33" r="2.3" fill="#44403c"/><circle cx="37.5" cy="33" r="2.3" fill="#44403c"/><path d="M27 39.5q5 4 10 0" stroke="#a8674a" stroke-width="2.1" fill="none" stroke-linecap="round"/><path d="M24 48l8 5 8-5" stroke="#fff" stroke-width="2.6" fill="none"/></svg>`,
+badge:s=>`<svg class="art" viewBox="0 0 64 64" width="${s}" height="${s}"><path d="M32 3l25 8.5v19C57 47.5 44.5 57 32 61 19.5 57 7 47.5 7 30.5v-19z" fill="#ea580c"/><path d="M32 9l19 6.5v15c0 13-9.5 20.5-19 24-9.5-3.5-19-11-19-24v-15z" fill="#fff7ed"/><path d="M32 17l4.4 8.9 9.8 1.4-7.1 6.9 1.7 9.8L32 39.4l-8.8 4.6 1.7-9.8-7.1-6.9 9.8-1.4z" fill="#ea580c"/></svg>`,
+calc:s=>`<svg class="art" viewBox="0 0 64 64" width="${s}" height="${s}"><rect x="11" y="5" width="42" height="54" rx="9" fill="#ea580c"/><rect x="17" y="11" width="30" height="13" rx="3" fill="#fff7ed"/><g fill="#ffedd5"><rect x="17" y="29" width="8" height="7" rx="2.5"/><rect x="28" y="29" width="8" height="7" rx="2.5"/><rect x="39" y="29" width="8" height="7" rx="2.5"/><rect x="17" y="39" width="8" height="7" rx="2.5"/><rect x="28" y="39" width="8" height="7" rx="2.5"/><rect x="39" y="39" width="8" height="17" rx="2.5"/><rect x="17" y="49" width="19" height="7" rx="2.5"/></g></svg>`,
+book:s=>`<svg class="art" viewBox="0 0 64 64" width="${s}" height="${s}"><path d="M8 12c8-4 16-4 24 1v42c-8-5-16-5-24-1z" fill="#ea580c"/><path d="M56 12c-8-4-16-4-24 1v42c8-5 16-5 24-1z" fill="#c2410c"/><path d="M32 13v42" stroke="#fff7ed" stroke-width="2.4"/><circle cx="32" cy="9" r="5.5" fill="#fff7ed"/></svg>`,
+abc:s=>`<svg class="art" viewBox="0 0 64 64" width="${s}" height="${s}"><path d="M8 14a8 8 0 018-8h32a8 8 0 018 8v22a8 8 0 01-8 8H26l-12 11V44h2a8 8 0 01-8-8z" fill="#ea580c"/><text x="32" y="33" font-size="18" font-weight="900" fill="#fff7ed" text-anchor="middle" font-family="Arial">ABC</text></svg>`,
+laptop:s=>`<svg class="art" viewBox="0 0 64 64" width="${s}" height="${s}"><rect x="11" y="12" width="42" height="29" rx="4" fill="#ea580c"/><rect x="15" y="16" width="34" height="21" rx="2" fill="#fff7ed"/><path d="M5 45h54l-4 7H9z" fill="#c2410c"/><rect x="26" y="46.5" width="12" height="2.6" rx="1.3" fill="#ffedd5"/></svg>`,
+globe:s=>`<svg class="art" viewBox="0 0 64 64" width="${s}" height="${s}"><circle cx="32" cy="32" r="26" fill="#ea580c"/><ellipse cx="32" cy="32" rx="26" ry="10" fill="none" stroke="#fff7ed" stroke-width="2"/><ellipse cx="32" cy="32" rx="11" ry="26" fill="none" stroke="#fff7ed" stroke-width="2"/><path d="M6 32h52M32 6v52" stroke="#fff7ed" stroke-width="2"/></svg>`,
+scale:s=>`<svg class="art" viewBox="0 0 64 64" width="${s}" height="${s}"><path d="M32 8v44M16 52h32" stroke="#ea580c" stroke-width="4" stroke-linecap="round"/><path d="M12 18h40" stroke="#ea580c" stroke-width="3.6" stroke-linecap="round"/><circle cx="32" cy="12" r="4" fill="#fff" stroke="#c2410c" stroke-width="2"/><path d="M12 18l-6 13h12z" fill="#c2410c"/><path d="M52 18l-6 13h12z" fill="#c2410c"/></svg>`,
+car:s=>`<svg class="art" viewBox="0 0 64 64" width="${s}" height="${s}"><rect x="24" y="10" width="16" height="6" rx="3" fill="#fed7aa"/><path d="M8 40c0-7 3-11 7-12l4-8c1-2 3-3 5-3h16c2 0 4 1 5 3l4 8c4 1 7 5 7 12v6H8z" fill="#ea580c"/><path d="M20 21l-3 7h30l-3-7z" fill="#fff7ed"/><circle cx="18" cy="47" r="6" fill="#292524"/><circle cx="46" cy="47" r="6" fill="#292524"/></svg>`,
+fp:s=>`<svg class="art" viewBox="0 0 64 64" width="${s}" height="${s}"><circle cx="32" cy="32" r="28" fill="#ea580c"/><g fill="none" stroke="#fff7ed" stroke-width="2.4" stroke-linecap="round"><path d="M20 34c0-6.6 5.4-12 12-12s12 5.4 12 12"/><path d="M24 38c0-4.4 3.6-8 8-8s8 3.6 8 8v4"/><path d="M28 42v-4a4 4 0 118 0v8"/><path d="M16 30c2-9 8-14 16-14s14 5 16 14"/></g></svg>`,
+doc:s=>`<svg class="art" viewBox="0 0 64 64" width="${s}" height="${s}"><path d="M14 4h26l12 12v44a4 4 0 01-4 4H14a4 4 0 01-4-4V8a4 4 0 014-4z" fill="#fff7ed" stroke="#ea580c" stroke-width="2.6"/><path d="M40 4l12 12H40z" fill="#ffedd5"/><path d="M19 28h26M19 36h26M19 44h16" stroke="#ea580c" stroke-width="2.6" stroke-linecap="round"/></svg>`,
+arch:s=>`<svg class="art" viewBox="0 0 64 64" width="${s}" height="${s}"><rect x="7" y="14" width="50" height="12" rx="3" fill="#c2410c"/><path d="M11 26h42v30a4 4 0 01-4 4H15a4 4 0 01-4-4z" fill="#ea580c"/><rect x="24" y="34" width="16" height="5" rx="2.5" fill="#fff7ed"/></svg>`,
+star:s=>`<svg class="art" viewBox="0 0 64 64" width="${s}" height="${s}"><path d="M32 5l8 17 18.5 2.6-13.4 13 3.3 18.4L32 47.3 15.6 56l3.3-18.4-13.4-13L24 22z" fill="#ea580c"/></svg>`,
+pdf:s=>`<svg class="art" viewBox="0 0 64 64" width="${s}" height="${s}"><path d="M14 4h26l12 12v44a4 4 0 01-4 4H14a4 4 0 01-4-4V8a4 4 0 014-4z" fill="#fff" stroke="#b91c1c" stroke-width="2.4"/><path d="M40 4l12 12H40z" fill="#fee2e2"/><rect x="10" y="32" width="44" height="17" rx="3" fill="#b91c1c"/><text x="32" y="45" font-size="12" font-weight="900" fill="#fff" text-anchor="middle" font-family="Arial">PDF</text></svg>`,
+clock:s=>`<svg class="art" viewBox="0 0 64 64" width="${s}" height="${s}"><circle cx="32" cy="34" r="25" fill="#fff7ed" stroke="#ea580c" stroke-width="3.4"/><path d="M32 18v17l11 7" stroke="#ea580c" stroke-width="3.6" fill="none" stroke-linecap="round"/><rect x="26" y="3" width="12" height="6" rx="3" fill="#ea580c"/></svg>`
+};
+const IC=(k,s=40)=>ART[k]?ART[k](s):ART.star(s);
+const GG='<svg width="19" height="19" viewBox="0 0 48 48"><path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"/><path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"/><path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"/><path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"/></svg>';
+const SOCS={fb:'<svg viewBox="0 0 24 24"><path d="M24 12.07C24 5.4 18.63 0 12 0S0 5.4 0 12.07C0 18.1 4.39 23.1 10.12 24v-8.44H7.08v-3.49h3.04V9.41c0-3.02 1.79-4.69 4.53-4.69 1.31 0 2.68.24 2.68.24v2.96h-1.51c-1.49 0-1.96.93-1.96 1.89v2.26h3.33l-.53 3.49h-2.8V24C19.61 23.1 24 18.1 24 12.07z"/></svg>',
+tt:'<svg viewBox="0 0 24 24"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-5.2 1.74 2.89 2.89 0 012.31-4.64c.3 0 .59.05.88.13V9.4a6.84 6.84 0 00-1-.05A6.33 6.33 0 005 20.1a6.34 6.34 0 0010.86-4.43v-7a8.16 8.16 0 004.77 1.52v-3.4a4.85 4.85 0 01-1.04-.1z"/></svg>',
+line:'<svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 5.8 2 10.5c0 4.2 3.6 7.7 8.4 8.4.33.07.78.22.9.5.1.26.07.66.03.92l-.15.87c-.04.26-.2 1.02.9.56 1.1-.46 5.9-3.48 8.06-5.96C21.5 13.9 22 12.3 22 10.5 22 5.8 17.52 2 12 2z"/></svg>'};
+
+/* ============ STORE ============ */
+const KEY='naihoi_v8',DK='naihoi_dev8',LK='naihoi_lock';
+let D=null;
+const save=()=>{try{localStorage.setItem(KEY,JSON.stringify(D))}catch(e){toast('พื้นที่เก็บข้อมูลเต็ม')}};
+const uid=()=>Date.now().toString(36)+Math.random().toString(36).slice(2,7);
+async function sha(s){const b=await crypto.subtle.digest('SHA-256',new TextEncoder().encode(s));return[...new Uint8Array(b)].map(x=>x.toString(16).padStart(2,'0')).join('')}
+function devId(){let d=localStorage.getItem(DK);if(!d){d='DEV-'+uid().toUpperCase();localStorage.setItem(DK,d)}return d}
+function devName(){const u=navigator.userAgent;const o=/iPhone|iPad/.test(u)?'iPhone/iPad':/Android/.test(u)?'Android':/Mac/.test(u)?'Mac':/Windows/.test(u)?'Windows':'อื่นๆ';const b=/Edg/.test(u)?'Edge':/Chrome/.test(u)?'Chrome':/Safari/.test(u)?'Safari':/Firefox/.test(u)?'Firefox':'Browser';return o+' • '+b}
+/* anti brute-force */
+function lockInfo(){try{return JSON.parse(localStorage.getItem(LK)||'{"n":0,"t":0}')}catch(e){return{n:0,t:0}}}
+function lockAdd(){const l=lockInfo();l.n++;if(l.n>=5)l.t=Date.now()+5*60000;localStorage.setItem(LK,JSON.stringify(l));return l}
+function lockClear(){localStorage.removeItem(LK)}
+function lockBlocked(){const l=lockInfo();return l.t&&Date.now()<l.t?Math.ceil((l.t-Date.now())/1000):0}
+
+/* ============ SEED : สายงาน + วิชา ============ */
+const TKS=[
+ {id:'sg',name:'นายสิบตำรวจ',short:'นายสิบ',icon:'sgt',min:180,pass:80,res:60,field:1500,desc:'สอบคัดเลือกบุคคลภายนอกเป็นข้าราชการตำรวจชั้นประทวน'},
+ {id:'cd',name:'นายร้อยตำรวจ',short:'นายร้อย',icon:'cop',min:180,pass:80,res:60,field:2000,desc:'สอบคัดเลือกเข้าเป็นนักเรียนนายร้อยตำรวจ / ชั้นสัญญาบัตร'}];
+const LNS=[
+ {id:'sg_pp',tr:'sg',name:'ป้องกันปราบปราม',icon:'car'},
+ {id:'sg_am',tr:'sg',name:'อำนวยการ',icon:'arch'},
+ {id:'sg_pf',tr:'sg',name:'พิสูจน์หลักฐาน',icon:'fp'},
+ {id:'cd_am',tr:'cd',name:'อำนวยการ',icon:'arch'},
+ {id:'cd_iv',tr:'cd',name:'พนักงานสอบสวน',icon:'scale'}];
+const SBS=[
+ /* ---- นายสิบ : ป้องกันปราบปราม (150) ---- */
+ {id:'pp1',tr:'sg',ln:'sg_pp',or:1,grp:'A',short:'ทั่วไป',name:'ความสามารถทั่วไป (คณิตศาสตร์และคิดวิเคราะห์)',icon:'calc',n:30},
+ {id:'pp2',tr:'sg',ln:'sg_pp',or:2,grp:'A',short:'ไทย',name:'ภาษาไทย',icon:'book',n:25},
+ {id:'pp3',tr:'sg',ln:'sg_pp',or:3,grp:'B',short:'อังกฤษ',name:'ภาษาอังกฤษ',icon:'abc',n:30},
+ {id:'pp4',tr:'sg',ln:'sg_pp',or:4,grp:'B',short:'คอมฯ',name:'คอมพิวเตอร์และเทคโนโลยีดิจิทัล',icon:'laptop',n:25},
+ {id:'pp5',tr:'sg',ln:'sg_pp',or:5,grp:'B',short:'กฎหมาย',name:'กฎหมายที่ประชาชนควรรู้',icon:'scale',n:20},
+ {id:'pp6',tr:'sg',ln:'sg_pp',or:6,grp:'B',short:'สังคม',name:'สังคม วัฒนธรรม จริยธรรม และประชาคมอาเซียน',icon:'globe',n:20},
+ /* ---- นายสิบ : อำนวยการ (150) ---- */
+ {id:'am1',tr:'sg',ln:'sg_am',or:1,grp:'A',short:'ทั่วไป',name:'ความสามารถทั่วไป (คณิตศาสตร์และเหตุผล)',icon:'calc',n:20},
+ {id:'am2',tr:'sg',ln:'sg_am',or:2,grp:'A',short:'ไทย',name:'ภาษาไทย',icon:'book',n:20},
+ {id:'am3',tr:'sg',ln:'sg_am',or:3,grp:'B',short:'สารบรรณ',name:'งานสารบรรณ',icon:'doc',n:30},
+ {id:'am4',tr:'sg',ln:'sg_am',or:4,grp:'B',short:'คอมฯ',name:'คอมพิวเตอร์และเทคโนโลยีดิจิทัล',icon:'laptop',n:40},
+ {id:'am5',tr:'sg',ln:'sg_am',or:5,grp:'B',short:'กฎหมาย',name:'กฎหมายที่ประชาชนควรรู้',icon:'scale',n:25},
+ {id:'am6',tr:'sg',ln:'sg_am',or:6,grp:'B',short:'อังกฤษ',name:'ภาษาอังกฤษ',icon:'abc',n:15},
+ /* ---- นายสิบ : พิสูจน์หลักฐาน (150) ---- */
+ {id:'pf1',tr:'sg',ln:'sg_pf',or:1,grp:'A',short:'ทั่วไป',name:'ความสามารถทั่วไป (คณิตศาสตร์)',icon:'calc',n:20},
+ {id:'pf2',tr:'sg',ln:'sg_pf',or:2,grp:'A',short:'ไทย',name:'ภาษาไทย',icon:'book',n:20},
+ {id:'pf3',tr:'sg',ln:'sg_pf',or:3,grp:'B',short:'IT',name:'เทคโนโลยีสารสนเทศ (คอมพิวเตอร์)',icon:'laptop',n:40},
+ {id:'pf4',tr:'sg',ln:'sg_pf',or:4,grp:'B',short:'สารบรรณ',name:'งานสารบรรณ',icon:'doc',n:30},
+ {id:'pf5',tr:'sg',ln:'sg_pf',or:5,grp:'B',short:'กฎหมาย',name:'กฎหมายที่ประชาชนควรรู้',icon:'scale',n:25},
+ {id:'pf6',tr:'sg',ln:'sg_pf',or:6,grp:'B',short:'อังกฤษ',name:'ภาษาต่างประเทศ (ภาษาอังกฤษ)',icon:'abc',n:15},
+ /* ---- นายร้อย : อำนวยการ (150) ---- */
+ {id:'ca1',tr:'cd',ln:'cd_am',or:1,grp:'A',short:'ทั่วไป',name:'ความสามารถทั่วไป (คณิตศาสตร์และเหตุผล)',icon:'calc',n:25},
+ {id:'ca2',tr:'cd',ln:'cd_am',or:2,grp:'A',short:'ไทย',name:'ภาษาไทย',icon:'book',n:25},
+ {id:'ca3',tr:'cd',ln:'cd_am',or:3,grp:'B',short:'อังกฤษ',name:'ภาษาอังกฤษ',icon:'abc',n:20},
+ {id:'ca4',tr:'cd',ln:'cd_am',or:4,grp:'B',short:'พ.ร.ก.',name:'พ.ร.ก. ว่าด้วยหลักเกณฑ์และวิธีบริหารบ้านเมืองที่ดี',icon:'scale',n:15},
+ {id:'ca5',tr:'cd',ln:'cd_am',or:5,grp:'B',short:'วิชาเฉพาะ',name:'วิชาเฉพาะตามสายงาน (สารบรรณ/คอมพิวเตอร์/กฎหมายที่เกี่ยวข้อง)',icon:'doc',n:65},
+ /* ---- นายร้อย : พนักงานสอบสวน (150) ---- */
+ {id:'ci1',tr:'cd',ln:'cd_iv',or:1,grp:'A',short:'ทั่วไป',name:'ความสามารถทั่วไป (คณิตศาสตร์)',icon:'calc',n:30},
+ {id:'ci2',tr:'cd',ln:'cd_iv',or:2,grp:'A',short:'ไทย',name:'ภาษาไทย',icon:'book',n:20},
+ {id:'ci3',tr:'cd',ln:'cd_iv',or:3,grp:'B',short:'ป.อาญา',name:'ประมวลกฎหมายอาญา',icon:'scale',n:25},
+ {id:'ci4',tr:'cd',ln:'cd_iv',or:4,grp:'B',short:'ป.วิ.อาญา',name:'ประมวลกฎหมายวิธีพิจารณาความอาญา',icon:'scale',n:25},
+ {id:'ci5',tr:'cd',ln:'cd_iv',or:5,grp:'B',short:'พยาน',name:'กฎหมายลักษณะพยาน',icon:'scale',n:25},
+ {id:'ci6',tr:'cd',ln:'cd_iv',or:6,grp:'B',short:'ปกครอง',name:'พ.ร.บ.วิธีปฏิบัติราชการทางปกครอง 2539 และสิทธิมนุษยชน',icon:'globe',n:10},
+ {id:'ci7',tr:'cd',ln:'cd_iv',or:7,grp:'B',short:'อังกฤษ',name:'ภาษาอังกฤษ',icon:'abc',n:15},
+ /* ---- ข้อสอบเก่า (ไม่เข้าสนามจำลอง) ---- */
+ {id:'old_sg',tr:'sg',ln:'*',or:99,grp:'X',short:'ข้อสอบเก่า',name:'ข้อสอบเก่า นายสิบตำรวจ (ย้อนหลัง)',icon:'star',n:0,old:true},
+ {id:'old_cd',tr:'cd',ln:'*',or:99,grp:'X',short:'ข้อสอบเก่า',name:'ข้อสอบเก่า นายร้อยตำรวจ (ย้อนหลัง)',icon:'star',n:0,old:true}];
+const SEEDQ={
+ calc:[['จงหาตัวเลขถัดไปของอนุกรม: 3, 7, 15, 31, ?',['47','55','63','71'],2,'พจน์ก่อน×2+1 → 63','e'],
+  ['A ทำงานเสร็จใน 6 วัน B เสร็จใน 12 วัน ช่วยกันเสร็จในกี่วัน',['3 วัน','4 วัน','5 วัน','9 วัน'],1,'1/6+1/12=1/4 ⇒ 4 วัน','m'],
+  ['ทุน 800 บาท ต้องการกำไร 25% ตั้งราคาขายเท่าใด',['950','1,000','1,025','1,060'],1,'800×1.25 = 1,000','e'],
+  ['ลด 20% แล้วลดอีก 10% เท่ากับลดรวมกี่ %',['28%','29%','30%','32%'],0,'1−(0.8×0.9)=28%','h'],
+  ['จำนวนนับน้อยที่สุดที่หารด้วย 6, 9, 12, 15 แล้วเหลือเศษ 4',['94','184','364','544'],1,'ค.ร.น.=180 บวกเศษ 4 = 184','h']],
+ book:[['ข้อใดใช้ราชาศัพท์ถูกต้อง',['พระองค์ทรงเสด็จไปพระตำหนัก','พระองค์เสด็จไปยังพระตำหนัก','พระองค์ทรงพระเสด็จ','พระองค์ได้ทรงเสด็จ'],1,'"เสด็จ" เป็นราชาศัพท์อยู่แล้ว','m'],
+  ['"น้ำขึ้นให้รีบตัก" หมายถึงข้อใด',['ทำงานให้เสร็จเร็ว','ฉวยโอกาสเมื่อมีจังหวะดี','เก็บออมไว้ใช้','อดทนรอคอย'],1,'มีโอกาสควรรีบทำ','e'],
+  ['ข้อใดสะกดถูกทุกคำ',['อนุญาต ผลลัพธ์ สังเกต','อนุญาติ ผลลัพท์ สังเกตุ','อนุญาต ผลลัพท์ สังเกตุ','อนุญาติ ผลลัพธ์ สังเกต'],0,'อนุญาต/ผลลัพธ์/สังเกต','m'],
+  ['คำใดเป็นคำสมาส',['ราชการ','ไฟฟ้า','พ่อตา','ลูกน้ำ'],0,'ราช+การ บาลี-สันสกฤต','h']],
+ abc:[['She ______ in Bangkok since 2015.',['lives','lived','has lived','is living'],2,'since + จุดเวลา ใช้ Present Perfect','e'],
+  ['The suspect was taken into ______.',['custody','custom','customs','costume'],0,'take into custody = ควบคุมตัว','m'],
+  ['If I ______ you, I would report it to the police.',['am','was','were','will be'],2,'If-clause type 2 ใช้ were','m'],
+  ['Neither the sergeant nor the officers ______ present.',['was','were','is','has been'],1,'ตามประธานตัวหลัง','h']],
+ laptop:[['คีย์ลัด "ค้นหาและแทนที่" ใน Word คือ',['Ctrl+F','Ctrl+H','Ctrl+R','Ctrl+E'],1,'Ctrl+H = Find and Replace','e'],
+  ['HTTPS ใช้พอร์ตมาตรฐานหมายเลขใด',['21','80','443','8080'],2,'HTTPS = 443','m'],
+  ['การหลอกให้กรอกข้อมูลผ่านเว็บปลอมเรียกว่า',['Phishing','Spamming','Hacking','Sniffing'],0,'Phishing','e'],
+  ['พ.ร.บ.คอมพิวเตอร์ฯ มาตรา 14 ว่าด้วยเรื่องใด',['นำเข้าข้อมูลเท็จสู่ระบบ','จดทะเบียนโดเมน','ภาษีอิเล็กทรอนิกส์','ลิขสิทธิ์'],0,'ม.14 นำเข้าข้อมูลเท็จ','h']],
+ scale:[['โทษทางอาญาตามประมวลกฎหมายอาญามีกี่สถาน',['3 สถาน','4 สถาน','5 สถาน','6 สถาน'],2,'ม.18 มี 5 สถาน','e'],
+  ['ควบคุมตัวผู้ถูกจับได้ไม่เกินกี่ชั่วโมงก่อนฝากขัง',['24 ชั่วโมง','48 ชั่วโมง','72 ชั่วโมง','7 วัน'],1,'ไม่เกิน 48 ชั่วโมง','m'],
+  ['เด็กอายุเท่าใดกระทำผิดไม่ต้องรับโทษ',['ไม่เกิน 7 ปี','ไม่เกิน 10 ปี','ไม่เกิน 12 ปี','ไม่เกิน 15 ปี'],2,'ไม่เกิน 12 ปี','m'],
+  ['"เจตนาเล็งเห็นผล" หมายถึงข้อใด',['ไม่ประสงค์ต่อผลแต่เล็งเห็นได้ว่าผลจะเกิด','ขาดความระมัดระวัง','ไม่รู้ข้อเท็จจริง','ถูกบังคับ'],0,'ป.อาญา ม.59 วรรคสอง','h']],
+ globe:[['อาเซียนก่อตั้งเมื่อใด ด้วยปฏิญญาใด',['8 ส.ค.2510 ปฏิญญากรุงเทพฯ','8 ส.ค.2515 ปฏิญญาจาการ์ตา','1 ม.ค.2559 กฎบัตรอาเซียน','24 ก.พ.2519 ปฏิญญาบาหลี'],0,'8 ส.ค. 2510 ปฏิญญากรุงเทพฯ','e'],
+  ['"3 ห่วง" ของเศรษฐกิจพอเพียงคือข้อใด',['ประหยัด อดทน ซื่อสัตย์','พอประมาณ มีเหตุผล มีภูมิคุ้มกัน','ความรู้ คุณธรรม ความเพียร','มั่นคง มั่งคั่ง ยั่งยืน'],1,'พอประมาณ มีเหตุผล มีภูมิคุ้มกัน','m'],
+  ['ข้าราชการต้องละเว้นสิ่งใดจึงจะเที่ยงธรรม',['อิทธิบาท 4','พรหมวิหาร 4','สังคหวัตถุ 4','อคติ 4'],3,'อคติ 4','h']],
+ doc:[['หนังสือราชการชนิดใดใช้ติดต่อภายในกรมเดียวกัน',['หนังสือภายนอก','หนังสือภายใน','หนังสือประทับตรา','หนังสือสั่งการ'],1,'หนังสือภายใน = บันทึกข้อความ','e'],
+  ['ระเบียบสำนักนายกฯ ว่าด้วยงานสารบรรณ ใช้บังคับปี พ.ศ.ใด',['2526','2530','2535','2540'],0,'พ.ศ. 2526 (แก้ไขเพิ่มเติมภายหลัง)','m'],
+  ['หนังสือราชการชนิดใดใช้ประทับตราแทนการลงชื่อ',['หนังสือภายนอก','หนังสือภายใน','หนังสือประทับตรา','หนังสือประชาสัมพันธ์'],2,'หนังสือประทับตรา','m'],
+  ['อายุการเก็บหนังสือราชการโดยปกติไม่น้อยกว่ากี่ปี',['5 ปี','10 ปี','15 ปี','20 ปี'],1,'โดยปกติไม่น้อยกว่า 10 ปี','h']],
+ fp:[['สารใดใช้ตรวจหาคราบเลือดแฝงในที่เกิดเหตุ',['ลูมินอล','ไอโอดีน','เอทานอล','กรดซัลฟิวริก'],0,'Luminol เรืองแสงกับฮีโมโกลบิน','m'],
+  ['DNA ที่ใช้พิสูจน์บุคคลสกัดจากส่วนใดของเซลล์',['นิวเคลียส','ไซโทพลาซึม','ผนังเซลล์','ไรโบโซม'],0,'DNA อยู่ในนิวเคลียส','m']],
+ star:[['(ข้อสอบเก่า) ข้อใดคือหน่วยงานที่รับผิดชอบการสอบตำรวจ',['กองการสอบ','กองสวัสดิการ','กองวินัย','กองตรวจราชการ'],0,'กองการสอบ สำนักงานตำรวจแห่งชาติ','e'],
+  ['(ข้อสอบเก่า) เกณฑ์ผ่านภาคความรู้ความสามารถทั่วไปคือกี่เปอร์เซ็นต์',['50%','60%','ไม่ต่ำกว่า 60%','ไม่ต่ำกว่า 80%'],2,'ตามประกาศแต่ละครั้ง โดยทั่วไปไม่ต่ำกว่า 60%','m']]};
+
+function qk(s,st,q){return s+'|'+st+'|'+String(q).replace(/\s+/g,'').toLowerCase()}
+function dedupe(){const seen=new Set(),b=D.questions.length;
+ D.questions=D.questions.filter(q=>{const k=qk(q.subj,q.set,q.q);if(seen.has(k))return false;seen.add(k);return true});return b-D.questions.length}
+
+async function init(){
+ D=JSON.parse(localStorage.getItem(KEY)||'null');
+ if(!D){
+  const salt=uid(),qs=[];
+  SBS.forEach(s=>{const pool=SEEDQ[s.icon]||SEEDQ.calc;
+   pool.forEach((x,i)=>qs.push({id:uid(),subj:s.id,set:String(Math.floor(i/3)+1),ord:i,q:x[0],o:x[1],a:x[2],e:x[3],diff:x[4]||'m',active:true}))});
+  D={users:[{id:uid(),code:'ADM001',name:'ผู้ดูแล',sur:'ระบบ',birth:'',tel:'',email:'admin@naihoi.local',
+    pass:await sha('NaiHoi@2024'+salt),salt,role:'admin',status:'pro',
+    access:{sg:{on:true,expire:Date.now()+3650*864e5},cd:{on:true,expire:Date.now()+3650*864e5}},
+    devices:[],maxDev:9,banned:false,createdAt:Date.now(),history:[],trial:{d:'',n:0}}],
+   tracks:TKS.map(t=>({...t})),lines:LNS.map(l=>({...l})),subjects:SBS.map(s=>({...s})),questions:qs,lessons:[],
+   books:[],payments:[],exams:[],
+   promos:[
+    {id:uid(),tr:'sg',per:'m',title:'นายสิบ รายเดือน',old:490,price:290,best:0,feat:['ข้อสอบครบทุกสายงานนายสิบ','ชุดข้อสอบแยกชุด ทำซ้ำได้','สนามสอบจำลอง 150 ข้อ','เฉลยละเอียดทุกข้อ']},
+    {id:uid(),tr:'sg',per:'y',title:'นายสิบ รายปี',old:2990,price:1590,best:1,feat:['ทุกอย่างของรายเดือน','คลังข้อสอบเก่าย้อนหลัง','อัปเดตแนวข้อสอบใหม่ฟรี 1 ปี','วิเคราะห์จุดอ่อนรายวิชา']},
+    {id:uid(),tr:'cd',per:'m',title:'นายร้อย รายเดือน',old:590,price:390,best:0,feat:['ข้อสอบครบทุกสายงานนายร้อย','ชุดข้อสอบแยกชุด ทำซ้ำได้','สนามสอบจำลอง 150 ข้อ','เฉลยละเอียดทุกข้อ']},
+    {id:uid(),tr:'cd',per:'y',title:'นายร้อย รายปี',old:3990,price:1990,best:1,feat:['ทุกอย่างของรายเดือน','กฎหมายเจาะลึกพนักงานสอบสวน','คลังข้อสอบเก่าย้อนหลัง','อัปเดตแนวข้อสอบใหม่ฟรี 1 ปี']}],
+   coupons:[{id:uid(),code:'NEW100',type:'baht',val:100,note:'สมาชิกใหม่ ลด 100 บาท'},{id:uid(),code:'POLICE20',type:'pct',val:20,note:'ลด 20%'}],
+   settings:{appName:'นายฮ้อย',tagline:'ติวสอบตำรวจ นายสิบ · นายร้อย ครบทุกสายงาน',
+    topbar:'เปิดคลังข้อสอบใหม่ทุกสัปดาห์ · สมัครวันนี้รับส่วนลดพิเศษ',
+    contact:'LINE: @naihoi · โทร 08x-xxx-xxxx',examRoom:'นายฮ้อย',omrTitle:'กระดาษคำตอบ',maxDevices:2,
+    heroTitle:'ติวสอบตำรวจ ให้ครบ จบที่เดียว',heroSub:'คลังข้อสอบตรงตามระเบียบการสอบจริงทุกสายงาน ฝึกเป็นชุด วัดผลเป็นสนามจำลอง 150 ข้อ พร้อมเฉลยละเอียดทุกข้อ',
+    theme:{main:'#c2410c',accent:'#ea580c'},mix:{e:40,m:40,h:20},boost:999,freeQ:10,freeSet:1,
+    media:[{id:uid(),type:'none',url:'',title:'แพลตฟอร์มติวสอบตำรวจ',sub:'ฝึกจากข้อสอบจริง วัดผลแบบสนามสอบจริง'}],
+    bank:{bank:'ธนาคารกสิกรไทย',acc:'123-4-56789-0',name:'บจก. นายฮ้อย เอ็ดดูเคชั่น'},
+    social:{fb:'',tt:'',line:''}},
+   session:null};save();
+ }
+ const s=D.settings;
+ s.theme=s.theme||{main:'#c2410c',accent:'#ea580c'};s.mix=s.mix||{e:40,m:40,h:20};
+ s.media=s.media||[];s.bank=s.bank||{bank:'',acc:'',name:''};s.social=s.social||{fb:'',tt:'',line:''};
+ s.boost=s.boost??999;s.freeQ=s.freeQ||10;s.freeSet=s.freeSet||1;
+ D.exams=D.exams||[];D.books=D.books||[];D.coupons=D.coupons||[];D.lines=D.lines||LNS.map(l=>({...l}));
+ D.questions.forEach((q,i)=>{if(!q.diff)q.diff='m';if(!q.set)q.set='1';if(q.ord==null)q.ord=i});
+ dedupe();D.session=null;applyTheme();mkWm();
+}
+function applyTheme(){const t=D.settings.theme,r=document.documentElement.style;
+ r.setProperty('--br',t.main);r.setProperty('--br3',t.accent);r.setProperty('--br2',shade(t.main,-18))}
+function shade(h,p){const n=parseInt(h.slice(1),16);let r=(n>>16)+Math.round(255*p/100),g=(n>>8&255)+Math.round(255*p/100),b=(n&255)+Math.round(255*p/100);
+ r=Math.max(0,Math.min(255,r));g=Math.max(0,Math.min(255,g));b=Math.max(0,Math.min(255,b));
+ return '#'+((1<<24)+(r<<16)+(g<<8)+b).toString(16).slice(1)}
+function mkWm(){let h='';for(let y=0;y<17;y++)for(let x=0;x<10;x++)h+=`<span style="left:${x*11+(y%2?5:0)}%;top:${y*6.6}%">นายฮ้อยเทส</span>`;
+ document.getElementById('wm').innerHTML=h}
+
+/* ============ HELPERS ============ */
+const me=()=>D.users.find(u=>u.id===D.session)||null;
+const isAdm=()=>me()?.role==='admin';
+const TR=id=>D.tracks.find(t=>t.id===id)||D.tracks[0];
+const LN=id=>D.lines.find(l=>l.id===id);
+const LNSof=tr=>D.lines.filter(l=>l.tr===tr);
+const SUBof=(tr,ln,inclOld)=>D.subjects.filter(s=>s.tr===tr&&(s.old?(inclOld&&s.ln==='*'):(ln?s.ln===ln:true))).sort((a,b)=>a.or-b.or);
+const MOCKSUB=(tr,ln)=>D.subjects.filter(s=>s.tr===tr&&s.ln===ln&&!s.old).sort((a,b)=>a.or-b.or);
+const OLDSUB=tr=>D.subjects.find(s=>s.tr===tr&&s.old);
+const sbj=id=>D.subjects.find(s=>s.id===id)||{name:'?',short:'?',icon:'star',tr:'sg',ln:''};
+const TOT=(tr,ln)=>MOCKSUB(tr,ln).reduce((a,b)=>a+(+b.n||0),0);
+const shuf=a=>a.map(v=>[Math.random(),v]).sort((x,y)=>x[0]-y[0]).map(x=>x[1]);
+const fmt=s=>`${String(Math.floor(s/3600)).padStart(2,'0')}:${String(Math.floor(s%3600/60)).padStart(2,'0')}:${String(s%60).padStart(2,'0')}`;
+const esc=t=>String(t??'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#39;');
+const thD=t=>new Date(t).toLocaleDateString('th-TH',{day:'2-digit',month:'short',year:'2-digit'});
+const thF=t=>new Date(t).toLocaleDateString('th-TH',{day:'numeric',month:'long',year:'numeric'});
+const thDT=t=>new Date(t).toLocaleString('th-TH',{day:'2-digit',month:'short',hour:'2-digit',minute:'2-digit'});
+const tday=()=>new Date().toISOString().slice(0,10);
+const dys=t=>Math.ceil((t-Date.now())/864e5);
+const nf=n=>Number(n).toLocaleString('th-TH');
+function toast(m){const d=document.createElement('div');d.className='tst';d.textContent=m;document.body.appendChild(d);setTimeout(()=>d.remove(),3200)}
+function modal(h,w){document.getElementById('mh').innerHTML=`<div class="mask" onclick="if(event.target===this)cm()"><div class="md ${w?'w':''}">${h}</div></div>`}
+function cm(){document.getElementById('mh').innerHTML=''}
+const v=id=>{const e=document.getElementById(id);return e?e.value.trim():''};
+const ck=id=>{const e=document.getElementById(id);return e?e.checked:false};
+function hasAcc(u,tr){const a=u.access?.[tr];return !!(a&&a.on&&a.expire&&Date.now()<a.expire)}
+function anyAcc(u){return D.tracks.some(t=>hasAcc(u,t.id))}
+const isPro=u=>u&&(u.role==='admin'||anyAcc(u));
+const DL={e:'ง่าย',m:'ปานกลาง',h:'ยาก'};
+const SETS=sid=>[...new Set(D.questions.filter(q=>q.subj===sid&&q.active).map(q=>q.set))].sort((a,b)=>(+a)-(+b));
+
+/* ============ ROUTER ============ */
+let view='home',tab='pay',exam=null,tid=null,cur='sg',curLn='',qTr='sg',qLn='',qF='all',qSet='',qS='',slIdx=0,slT=null,cdT=null;
+function go(x){view=x;if(x!=='exam'&&tid){clearInterval(tid);tid=null}stopHome();render();scrollTo(0,0)}
+function stopHome(){if(slT){clearInterval(slT);slT=null}if(cdT){clearInterval(cdT);cdT=null}}
+function render(){
+ save();applyTheme();
+ const nav=document.getElementById('nav'),app=document.getElementById('app'),u=me();
+ document.getElementById('tb').textContent=D.settings.topbar||'';
+ if(!u){
+  nav.innerHTML=`<div class="logo" onclick="go('home')">${IC('cop',34)} ${esc(D.settings.appName)}</div>
+   <a onclick="go('home')" class="${view==='home'?'active':''}">หน้าแรก</a>
+   <a onclick="go('pricing')" class="${view==='pricing'?'active':''}">แพ็กเกจ</a>
+   <div class="sp"></div>
+   <a onclick="loginBox()">เข้าสู่ระบบ</a>
+   <button class="btn btn-p btn-s" onclick="regBox()">สมัครสมาชิกฟรี</button>`;
+  app.innerHTML=view==='pricing'?vPricing():vLanding();ftRender();
+  if(view!=='pricing'){startSlide();startCd()}return}
+ if(!hasAcc(u,cur)&&u.role!=='admin'&&anyAcc(u))cur=D.tracks.find(t=>hasAcc(u,t.id)).id;
+ const L=[['home','หน้าแรก'],['practice','ฝึกทำข้อสอบ'],['learn','คลังความรู้'],['stats','สถิติของฉัน'],['pricing','แพ็กเกจ']];
+ if(u.role==='admin')L.push(['admin','หลังบ้าน']);
+ nav.innerHTML=`<div class="logo" onclick="go('home')">${IC(TR(cur).icon,34)} ${esc(D.settings.appName)}</div>
+  <select class="trk" onchange="cur=this.value;curLn='';go('home')">${D.tracks.map(t=>`<option value="${t.id}" ${cur===t.id?'selected':''}>สาย${esc(t.short)}</option>`).join('')}</select>
+  ${L.map(x=>`<a onclick="go('${x[0]}')" class="${view===x[0]?'active':''}">${x[1]}</a>`).join('')}
+  <div class="sp"></div><span class="pill">${u.role==='admin'?'ผู้ดูแล':isPro(u)?'สมาชิก':'ทดลองฟรี'}</span>
+  <a onclick="prof()">${esc(u.name)}</a><button class="btn btn-o btn-s" onclick="logout()">ออก</button>`;
+ const V={home:vHome,practice:vPractice,learn:vLearn,stats:vStats,pricing:vPricing,exam:vExam,result:vResult,admin:vAdmin};
+ app.innerHTML=(V[view]||vHome)();ftRender();
+ if(view==='exam')startT();
+ if(view==='home'){startSlide();startCd()}
+}
+function ftRender(){const s=D.settings.social;
+ document.getElementById('ft').innerHTML=`<div class="soc">
+  ${s.fb?`<a href="${esc(s.fb)}" target="_blank" rel="noopener" title="Facebook">${SOCS.fb}</a>`:''}
+  ${s.tt?`<a href="${esc(s.tt)}" target="_blank" rel="noopener" title="TikTok">${SOCS.tt}</a>`:''}
+  ${s.line?`<a href="${esc(s.line)}" target="_blank" rel="noopener" title="LINE">${SOCS.line}</a>`:''}</div>
+  <div style="font-size:14px;font-weight:700">${esc(D.settings.appName)}</div>
+  <div style="font-size:12.5px;color:#a8a29e;margin-top:4px">${esc(D.settings.contact)}</div>
+  <div><span class="admdot" onclick="admDoor()" title=""></span></div>`}
+
+/* ============ SLIDER / COUNTDOWN / STATS ============ */
+function slHTML(){
+ const m=D.settings.media.filter(x=>x.type==='none'||x.url);
+ if(!m.length)return `<div class="sld"><div class="sl-empty">${IC('badge',66)}<div style="margin-top:10px;font-weight:700">นายฮ้อย</div></div></div>`;
+ return `<div class="sld">
+  ${m.map((x,i)=>{let in_='';
+   if(x.type==='image'&&x.url)in_=`<img src="${esc(x.url)}" alt="">`;
+   else if(x.type==='video'&&x.url)in_=`<video src="${esc(x.url)}" autoplay muted loop playsinline></video>`;
+   else if(x.type==='youtube'&&x.url)in_=`<iframe src="https://www.youtube.com/embed/${esc(x.url)}?rel=0" allowfullscreen></iframe>`;
+   else in_=`<div class="sl-empty">${IC('badge',66)}</div>`;
+   return `<div class="sl ${i===0?'on':''}">${in_}${(x.title||x.sub)?`<div class="sl-cap"><b>${esc(x.title||'')}</b><span>${esc(x.sub||'')}</span></div>`:''}</div>`}).join('')}
+  ${m.length>1?`<button class="sarw l" onclick="slGo(-1)">‹</button><button class="sarw r" onclick="slGo(1)">›</button>
+  <div class="dots">${m.map((_,i)=>`<i class="${i===0?'on':''}" onclick="slSet(${i})"></i>`).join('')}</div>`:''}</div>`}
+function slSet(i){const s=document.querySelectorAll('.sl'),d=document.querySelectorAll('.dots i');
+ if(!s.length)return;s.forEach(x=>x.classList.remove('on'));d.forEach(x=>x.classList.remove('on'));
+ slIdx=(i+s.length)%s.length;s[slIdx].classList.add('on');if(d[slIdx])d[slIdx].classList.add('on')}
+function slGo(d){slSet(slIdx+d)}
+function startSlide(){if(slT)clearInterval(slT);slIdx=0;
+ if(document.querySelectorAll('.sl').length<2)return;slT=setInterval(()=>slSet(slIdx+1),5200)}
+function cdHTML(){
+ const ev=D.exams.filter(e=>e.date);
+ if(!ev.length)return '';
+ return `<div class="sec-t"><h2>นับถอยหลังวันสอบ</h2></div>
+ <div class="cdw">${ev.map(e=>`<div class="cdc" data-t="${new Date(e.date).getTime()}">
+  <div class="nm">${IC(e.ln?LN(e.ln)?.icon||'badge':TR(e.tr).icon,22)} ${esc(e.name)}</div>
+  <div class="dt">สอบวันที่ ${thF(e.date)}</div>
+  <div class="cdn"><div><b>–</b><span>วัน</span></div><div><b>–</b><span>ชม.</span></div><div><b>–</b><span>นาที</span></div><div><b>–</b><span>วิ</span></div></div></div>`).join('')}</div>`}
+function startCd(){if(cdT)clearInterval(cdT);
+ const tick=()=>{document.querySelectorAll('.cdc').forEach(c=>{
+  const t=+c.dataset.t,df=t-Date.now(),box=c.querySelector('.cdn');if(!box)return;
+  if(df<=0){box.outerHTML='<div class="cd-over">ถึงวันสอบแล้ว — ขอให้โชคดี!</div>';return}
+  const d=Math.floor(df/864e5),h=Math.floor(df/36e5)%24,m=Math.floor(df/6e4)%60,s=Math.floor(df/1e3)%60;
+  const b=box.querySelectorAll('b');b[0].textContent=d;b[1].textContent=String(h).padStart(2,'0');
+  b[2].textContent=String(m).padStart(2,'0');b[3].textContent=String(s).padStart(2,'0')})};
+ tick();cdT=setInterval(tick,1000)}
+function stHTML(){const b=D.settings.boost||0;
+ const us=D.users.filter(u=>u.role!=='admin').length+b;
+ const qn=D.questions.filter(q=>q.active).length+b;
+ const at=D.users.reduce((a,u)=>a+u.history.length,0)+b;
+ return `<div class="stbar">
+  <div class="stc"><b>${nf(us)}</b><span>ผู้ใช้งานที่ไว้ใจเรา</span><em>สมาชิกและผู้ทดลองใช้</em></div>
+  <div class="stc"><b>${nf(qn)}</b><span>ข้อสอบในระบบ</span><em>พร้อมเฉลยละเอียดทุกข้อ</em></div>
+  <div class="stc"><b>${nf(at)}</b><span>ครั้งที่ทำข้อสอบแล้ว</span><em>สถิติสะสมทั้งระบบ</em></div></div>`}
+function bkHTML(){if(!D.books.length)return '';
+ return `<div class="sec-t"><h2>หนังสือแนะนำสำหรับเตรียมสอบ</h2></div>
+ <div class="grid g2">${D.books.map(b=>`<div class="bkc" ${b.link?`onclick="window.open('${esc(b.link)}','_blank','noopener')"`:''}>
+  ${b.img?`<img src="${esc(b.img)}" alt="">`:`<div style="width:86px;height:116px;border-radius:9px;background:var(--lt2);display:grid;place-items:center;flex-shrink:0">${IC('book',40)}</div>`}
+  <div><h4>${esc(b.t)}</h4><div class="mu" style="font-size:12.8px;line-height:1.55">${esc(b.d)}</div>
+  ${b.link?'<div style="margin-top:8px"><span class="chip">ดูรายละเอียด →</span></div>':''}</div></div>`).join('')}</div>`}
+function ctaHTML(){const u=me();
+ return `<div class="cta"><h2>คุณพร้อมจะเป็นตำรวจหรือยัง?</h2>
+ <p>เริ่มต้นวันนี้ ฝึกจากข้อสอบจริง วัดผลแบบสนามสอบจริง แล้วคุณจะรู้ว่าคุณพร้อมแค่ไหน</p>
+ <button class="btn btn-p" style="padding:13px 32px;font-size:16px" onclick="${u?"go('pricing')":'regBox()'}">${u?(isPro(u)?'ดูแพ็กเกจต่ออายุ':'สมัครสมาชิกเต็มรูปแบบ'):'สมัครสมาชิกเลย'}</button></div>`}
+
+/* ============ LANDING ============ */
+function vLanding(){const s=D.settings;
+ return `<div class="hero"><div class="hero-in">
+  <div><div class="kicker">${esc(s.tagline)}</div>
+   <h1>${esc(s.heroTitle)}</h1>
+   <p>${esc(s.heroSub)}</p>
+   <div class="btns"><button class="btn btn-p" onclick="regBox()">สมัครสมาชิกฟรี</button>
+   <button class="btn btn-o" onclick="go('pricing')">ดูแพ็กเกจทั้งหมด</button></div>
+   <small>ทดลองทำข้อสอบฟรีวันละ ${s.freeSet} ชุด (${s.freeQ} ข้อ) ไม่มีค่าใช้จ่าย</small></div>
+  <div>${slHTML()}</div></div></div>
+ <div style="margin-top:28px">${cdHTML()}</div>
+ <div style="margin-top:22px">${stHTML()}</div>
+ <div class="sec-t"><h2>สายสอบและสายงานที่เปิดติว</h2></div>
+ <div class="grid g2">${D.tracks.map(t=>`<div class="card">
+  <div style="display:flex;gap:14px;align-items:center">${IC(t.icon,56)}
+   <div><h3 style="color:var(--br)">${esc(t.name)}</h3><div class="mu">${esc(t.desc)}</div></div></div>
+  <div style="margin-top:12px">${LNSof(t.id).map(l=>`<span class="chip">${esc(l.name)} · ${TOT(t.id,l.id)} ข้อ</span>`).join('')}</div>
+  <button class="btn btn-o btn-s" style="margin-top:12px" onclick="regBox()">เริ่มติวสายนี้</button></div>`).join('')}</div>
+ ${bkHTML()}${ctaHTML()}`}
+
+/* ============ AUTH ============ */
+function loginBox(){
+ const bl=lockBlocked();
+ modal(`<div style="text-align:center">${IC('cop',62)}<h2 style="margin-top:8px">เข้าสู่ระบบ</h2>
+  <p class="mu">ใช้อีเมลและรหัสผ่านที่สมัครไว้</p></div>
+ ${bl?`<div class="warn" style="margin-top:12px">พยายามเข้าสู่ระบบผิดหลายครั้ง กรุณารออีก ${bl} วินาที</div>`:''}
+ <button class="btn btn-g2" style="width:100%;margin-top:12px;padding:11px" onclick="gPick()">${GG} เข้าสู่ระบบด้วย Google</button>
+ <div style="text-align:center;color:var(--mu);font-size:12px;margin:13px 0">— หรือใช้อีเมลและรหัสผ่าน —</div>
+ <label>อีเมล</label><input id="li" type="email" autocomplete="username" placeholder="you@example.com">
+ <label>รหัสผ่าน</label><input id="lp" type="password" autocomplete="current-password" onkeydown="if(event.key==='Enter')doLogin()">
+ <button class="btn btn-p" style="width:100%;margin-top:16px" onclick="doLogin()">เข้าสู่ระบบ</button>
+ <div style="text-align:center;margin-top:14px;font-size:13.5px">ยังไม่มีบัญชี? <a style="color:var(--br);font-weight:700;cursor:pointer" onclick="regBox()">สมัครสมาชิกฟรี</a></div>`)}
+async function doLogin(){
+ const bl=lockBlocked();if(bl)return toast(`ถูกระงับชั่วคราว รออีก ${bl} วินาที`);
+ const e=v('li').toLowerCase(),p=v('lp');
+ if(!e||!p)return toast('กรอกอีเมลและรหัสผ่าน');
+ const u=D.users.find(x=>x.email===e);
+ if(!u||!u.pass){lockAdd();return toast('อีเมลหรือรหัสผ่านไม่ถูกต้อง')}
+ if(await sha(p+u.salt)!==u.pass){const l=lockAdd();return toast(`อีเมลหรือรหัสผ่านไม่ถูกต้อง${l.n>=3?' (เหลืออีก '+Math.max(0,5-l.n)+' ครั้ง)':''}`)}
+ lockClear();enter(u)}
+function gPick(){
+ modal(`<div style="text-align:center">${GG}<h2 style="margin-top:10px">เลือกบัญชี Google</h2>
+  <p class="mu">ระบบจะดึงชื่อและอีเมลมาให้อัตโนมัติ</p></div>
+ <label>อีเมล Google</label><input id="ge" type="email" placeholder="you@gmail.com">
+ <div class="row2"><div><label>ชื่อ</label><input id="gn"></div><div><label>นามสกุล</label><input id="gs"></div></div>
+ <button class="btn btn-p" style="width:100%;margin-top:16px" onclick="gDone()">ดำเนินการต่อ</button>
+ <button class="btn btn-o" style="width:100%;margin-top:8px" onclick="loginBox()">ย้อนกลับ</button>`)}
+function gDone(){
+ const e=v('ge').toLowerCase(),n=v('gn'),s=v('gs');
+ if(!e||!e.includes('@'))return toast('กรอกอีเมลให้ถูกต้อง');
+ const u=D.users.find(x=>x.email===e);
+ if(u)return enter(u);
+ regBox(e,n,s,true)}
+function regBox(email,nm,sur,viaG){
+ modal(`<div style="text-align:center">${IC('sgt',56)}<h2 style="margin-top:8px">สมัครสมาชิก</h2>
+  <p class="mu">${viaG?'ยืนยันข้อมูลจากบัญชี Google':'กรอกข้อมูลเพื่อเริ่มทดลองใช้ฟรี'}</p></div>
+ ${viaG?'':`<button class="btn btn-g2" style="width:100%;margin-top:12px" onclick="gPick()">${GG} สมัครด้วยบัญชี Google (เร็วกว่า)</button>
+ <div style="text-align:center;color:var(--mu);font-size:12px;margin:13px 0">— หรือกรอกข้อมูลเอง —</div>`}
+ <div class="row2"><div><label>ชื่อ</label><input id="rn" value="${esc(nm||'')}"></div>
+ <div><label>นามสกุล</label><input id="rs" value="${esc(sur||'')}"></div></div>
+ <label>วัน/เดือน/ปีเกิด</label><input id="rbd" type="date">
+ <label>เบอร์โทรศัพท์</label><input id="rt" inputmode="tel" placeholder="08x-xxx-xxxx">
+ <label>อีเมล</label><input id="re" type="email" value="${esc(email||'')}" placeholder="you@example.com">
+ <label>ตั้งรหัสผ่าน (อย่างน้อย 6 ตัวอักษร)</label><input id="rp" type="password" autocomplete="new-password">
+ <label>ยืนยันรหัสผ่าน</label><input id="rp2" type="password" autocomplete="new-password">
+ <label>สายสอบที่สนใจ</label><select id="rtr" onchange="regLn()">${D.tracks.map(t=>`<option value="${t.id}">${esc(t.name)}</option>`).join('')}</select>
+ <label>สายงาน</label><select id="rln">${LNSof('sg').map(l=>`<option value="${l.id}">${esc(l.name)}</option>`).join('')}</select>
+ <div style="background:var(--lt);border:1px solid var(--bd);border-radius:12px;padding:12px;margin-top:14px;font-size:12.6px;line-height:1.75;color:var(--mu)">
+  <b style="color:var(--br)">สิทธิ์เริ่มต้น (ทดลองใช้ฟรี)</b><br>
+  • ทำข้อสอบชุดเล็กได้วันละ ${D.settings.freeSet} ชุด ชุดละ ${D.settings.freeQ} ข้อ (สุ่มจากคลัง)<br>
+  • ชุดข้อสอบรายวิชา คลังข้อสอบเก่า และสนามจำลอง 150 ข้อ จะล็อกไว้จนกว่าจะสมัครแพ็กเกจ</div>
+ <button class="btn btn-p" style="width:100%;margin-top:16px" onclick="doReg()">สมัครและเริ่มใช้งาน</button>
+ <button class="btn btn-o" style="width:100%;margin-top:8px" onclick="loginBox()">มีบัญชีแล้ว — เข้าสู่ระบบ</button>`,true)}
+function regLn(){const t=v('rtr');
+ document.getElementById('rln').innerHTML=LNSof(t).map(l=>`<option value="${l.id}">${esc(l.name)}</option>`).join('')}
+async function doReg(){
+ const n=v('rn'),s=v('rs'),b=v('rbd'),t=v('rt'),e=v('re').toLowerCase(),p=v('rp'),p2=v('rp2');
+ if(!n||!s)return toast('กรอกชื่อและนามสกุล');
+ if(!e||!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(e))return toast('กรอกอีเมลให้ถูกต้อง');
+ if(!t||t.replace(/\D/g,'').length<9)return toast('กรอกเบอร์โทรให้ถูกต้อง');
+ if(!p||p.length<6)return toast('รหัสผ่านต้องมีอย่างน้อย 6 ตัวอักษร');
+ if(p!==p2)return toast('ยืนยันรหัสผ่านไม่ตรงกัน');
+ if(D.users.some(x=>x.email===e))return toast('อีเมลนี้สมัครไว้แล้ว กรุณาเข้าสู่ระบบ');
+ const salt=uid();
+ const u={id:uid(),code:'NH'+String(D.users.filter(x=>x.role!=='admin').length+1).padStart(4,'0'),
+  name:n,sur:s,birth:b,tel:t,email:e,pass:await sha(p+salt),salt,role:'user',status:'free',
+  wantTr:v('rtr'),wantLn:v('rln'),access:{sg:{on:false,expire:null},cd:{on:false,expire:null}},
+  devices:[],maxDev:D.settings.maxDevices,banned:false,createdAt:Date.now(),history:[],trial:{d:'',n:0}};
+ D.users.push(u);save();enter(u);toast('สมัครสมาชิกสำเร็จ! เริ่มทดลองใช้ฟรีได้เลย')}
+function enter(u){
+ if(u.banned)return toast('บัญชีนี้ถูกระงับ — ติดต่อผู้ดูแลระบบ');
+ const d=devId(),mx=u.maxDev||D.settings.maxDevices;u.devices=u.devices||[];
+ const f=u.devices.find(x=>x.id===d);
+ if(f)f.at=Date.now();
+ else if(u.devices.length<mx)u.devices.push({id:d,name:devName(),at:Date.now(),first:Date.now()});
+ else{save();return modal(`<div style="text-align:center">${IC('car',60)}<h2 style="margin-top:8px;color:var(--bad)">เกินจำนวนอุปกรณ์</h2>
+  <p class="mu">บัญชีนี้ใช้ครบ ${mx} อุปกรณ์แล้ว ติดต่อผู้ดูแลเพื่อรีเซ็ต<br><b>${esc(D.settings.contact)}</b></p></div>
+  <button class="btn btn-o" style="width:100%;margin-top:14px" onclick="cm()">ปิด</button>`)}
+ u.lastLogin=Date.now();D.session=u.id;
+ cur=anyAcc(u)?D.tracks.find(t=>hasAcc(u,t.id)).id:(u.wantTr||'sg');
+ curLn=u.wantLn&&LN(u.wantLn)&&LN(u.wantLn).tr===cur?u.wantLn:'';
+ save();cm();go('home')}
+function admDoor(){
+ const bl=lockBlocked();
+ modal(`<div style="text-align:center">${IC('badge',52)}<h2 style="margin-top:6px">เข้าสู่ระบบผู้ดูแลระบบ</h2>
+ <p class="mu" style="font-size:12.5px">เฉพาะเจ้าหน้าที่ที่ได้รับอนุญาต</p></div>
+ ${bl?`<div class="warn" style="margin-top:12px">ถูกระงับชั่วคราว รออีก ${bl} วินาที</div>`:''}
+ <label>อีเมลผู้ดูแล</label><input id="ae" type="email" autocomplete="off">
+ <label>รหัสผ่าน</label><input id="ap" type="password" autocomplete="off" onkeydown="if(event.key==='Enter')admLogin()">
+ <button class="btn btn-d" style="width:100%;margin-top:16px" onclick="admLogin()">เข้าสู่ระบบ</button>
+ <button class="btn btn-o" style="width:100%;margin-top:8px" onclick="cm()">ยกเลิก</button>`)}
+async function admLogin(){
+ const bl=lockBlocked();if(bl)return toast(`ถูกระงับชั่วคราว รออีก ${bl} วินาที`);
+ const e=v('ae').toLowerCase(),p=v('ap');
+ const u=D.users.find(x=>x.email===e&&x.role==='admin');
+ if(!u){lockAdd();return toast('ข้อมูลเข้าสู่ระบบไม่ถูกต้อง')}
+ if(await sha(p+u.salt)!==u.pass){lockAdd();return toast('ข้อมูลเข้าสู่ระบบไม่ถูกต้อง')}
+ lockClear();D.session=u.id;save();cm();tab='pay';go('admin')}
+function logout(){D.session=null;save();go('home')}
+function pwBox(){
+ const u=me();
+ modal(`<h2>เปลี่ยนรหัสผ่าน</h2><p class="mu">${esc(u.email)}</p>
+ <label>รหัสผ่านเดิม</label><input id="w0" type="password" autocomplete="current-password">
+ <label>รหัสผ่านใหม่ (อย่างน้อย 6 ตัวอักษร)</label><input id="w1" type="password" autocomplete="new-password">
+ <label>ยืนยันรหัสผ่านใหม่</label><input id="w2" type="password" autocomplete="new-password">
+ <button class="btn btn-p" style="width:100%;margin-top:16px" onclick="pwSave()">บันทึกรหัสผ่านใหม่</button>
+ <button class="btn btn-o" style="width:100%;margin-top:8px" onclick="cm()">ยกเลิก</button>`)}
+async function pwSave(){
+ const u=me(),o=v('w0'),a=v('w1'),b=v('w2');
+ if(u.pass&&await sha(o+u.salt)!==u.pass)return toast('รหัสผ่านเดิมไม่ถูกต้อง');
+ if(!a||a.length<6)return toast('รหัสผ่านใหม่ต้องมีอย่างน้อย 6 ตัวอักษร');
+ if(a!==b)return toast('ยืนยันรหัสผ่านไม่ตรงกัน');
+ u.salt=uid();u.pass=await sha(a+u.salt);save();cm();toast('เปลี่ยนรหัสผ่านเรียบร้อย')}
+function pwReset(id){
+ const u=D.users.find(x=>x.id===id);
+ modal(`<h2>ตั้งรหัสผ่านใหม่ให้สมาชิก</h2><p class="mu">${esc(u.name+' '+(u.sur||''))} · ${esc(u.email)}</p>
+ <label>รหัสผ่านใหม่</label><input id="np" type="password">
+ <button class="btn btn-p" style="width:100%;margin-top:16px" onclick="pwResetSave('${id}')">บันทึก</button>
+ <button class="btn btn-o" style="width:100%;margin-top:8px" onclick="cm()">ยกเลิก</button>`)}
+async function pwResetSave(id){
+ const u=D.users.find(x=>x.id===id),p=v('np');
+ if(!p||p.length<6)return toast('รหัสผ่านต้องมีอย่างน้อย 6 ตัวอักษร');
+ u.salt=uid();u.pass=await sha(p+u.salt);save();cm();render();toast('ตั้งรหัสผ่านใหม่แล้ว')}
+
+/* ============ HOME ============ */
+function vHome(){
+ const u=me(),t=TR(cur),lns=LNSof(cur);
+ const H=u.history.filter(h=>h.tr===cur);
+ const avg=H.length?Math.round(H.reduce((a,h)=>a+h.score/h.total*100,0)/H.length):0;
+ const a=u.access?.[cur],warn=a&&a.expire&&dys(a.expire)<=7&&dys(a.expire)>0;
+ return `${!isPro(u)?`<div class="warn">${IC('clock',26)}<div><b>โหมดทดลองใช้ฟรี</b> — ทำได้วันละ ${D.settings.freeSet} ชุด (${D.settings.freeQ} ข้อ สุ่มจากคลัง) ·
+  <a style="color:var(--br);font-weight:800;cursor:pointer" onclick="go('pricing')">สมัครสมาชิกเพื่อปลดล็อกทั้งหมด →</a></div></div>`:''}
+ ${warn?`<div class="warn">${IC('clock',26)}<div><b>สิทธิ์สาย${esc(t.short)}จะหมดอายุในอีก ${dys(a.expire)} วัน</b> (${thD(a.expire)}) · ติดต่อต่ออายุ ${esc(D.settings.contact)}</div></div>`:''}
+ <div class="grid g2" style="align-items:center;margin-bottom:8px">
+  <div><div class="kicker">ยินดีต้อนรับ</div><h1>สวัสดี ${esc(u.name)}<br>พร้อมตะลุยโจทย์วันนี้หรือยัง?</h1>
+  <p class="mu" style="margin:10px 0 16px">${esc(t.desc)}</p>
+  <button class="btn btn-p" onclick="go('practice')">เริ่มทำข้อสอบ</button></div>
+  <div>${slHTML()}</div></div>
+ ${cdHTML()}
+ <div style="margin-top:22px">${stHTML()}</div>
+ <div class="sec-t"><h2>เลือกสายงานที่สมัครสอบ — สาย${esc(t.name)}</h2></div>
+ <div class="grid g3">${lns.map(l=>`<div class="card sj" onclick="curLn='${l.id}';go('practice')">${IC(l.icon,44)}
+  <h3 style="margin:9px 0 4px">${esc(l.name)}</h3>
+  <div class="mu">${MOCKSUB(cur,l.id).length} วิชา · รวม ${TOT(cur,l.id)} ข้อ</div>
+  <div style="margin-top:8px">${MOCKSUB(cur,l.id).slice(0,4).map(s=>`<span class="chip">${esc(s.short)}</span>`).join('')}</div></div>`).join('')}</div>
+ <div class="grid g3" style="margin-top:16px">
+  <div class="card"><div class="mu">สนามสอบจำลอง</div><h1 style="font-size:26px">${curLn?TOT(cur,curLn):150} ข้อ</h1><div class="mu">${t.min} นาที (3 ชั่วโมง) · เกณฑ์ ${t.pass}%</div></div>
+  <div class="card"><div class="mu">ชุดที่ทำในสายนี้</div><h1 style="font-size:26px">${H.length}</h1><div class="mu">คลังข้อสอบ ${D.questions.filter(q=>q.active&&sbj(q.subj).tr===cur).length} ข้อ</div></div>
+  <div class="card"><div class="mu">คะแนนเฉลี่ยของคุณ</div><h1 style="font-size:26px">${avg}%</h1><div class="bar"><i style="width:${avg}%"></i></div></div></div>
+ ${curLn?`<div class="sec-t"><h2>วิชาที่ต้องสอบ — ${esc(LN(curLn).name)}</h2></div>
+ <div class="grid g3">${MOCKSUB(cur,curLn).map(s=>`<div class="card sj" onclick="go('practice')">${IC(s.icon,40)}
+  <h3 style="margin:7px 0 3px;font-size:15px">${s.or}. ${esc(s.name)}</h3>
+  <div style="margin-top:8px"><span class="chip">${s.n} ข้อ</span><span class="chip gy">${SETS(s.id).length} ชุด</span><span class="chip ${s.grp==='A'?'w':''}">กลุ่ม ${s.grp}</span></div></div>`).join('')}</div>`:''}
+ ${bkHTML()}${ctaHTML()}`}
+
+/* ============ PRICING / PAYMENT ============ */
+function vPricing(){const u=me();
+ return `<h1 style="text-align:center">แพ็กเกจสมาชิก</h1>
+ <p class="mu" style="text-align:center;margin-bottom:22px">เลือกสายสอบและระยะเวลาที่ต้องการ · ราคาพิเศษช่วงเปิดตัว</p>
+ ${D.tracks.map(t=>{const ps=D.promos.filter(p=>p.tr===t.id);if(!ps.length)return '';
+  return `<div class="sec-t">${IC(t.icon,30)}<h2>แพ็กเกจสาย${esc(t.name)}</h2></div>
+  <div class="grid g2" style="align-items:start">${ps.map(p=>`<div class="pk ${p.best?'best':''}">
+   ${p.best?'<span class="tag">คุ้มที่สุด · ประหยัดกว่า</span>':''}
+   <h3>${esc(p.title)}</h3>
+   <div style="margin:10px 0"><span class="old">฿${nf(p.old)}</span></div>
+   <div class="now">฿${nf(p.price)}</div>
+   <div class="mu">${p.per==='y'?'ต่อปี (365 วัน)':'ต่อเดือน (30 วัน)'}${p.per==='y'?` · เฉลี่ยเดือนละ ฿${nf(Math.round(p.price/12))}`:''}</div>
+   <ul>${(p.feat||[]).map(f=>`<li>${esc(f)}</li>`).join('')}</ul>
+   <button class="btn ${p.best?'btn-p':'btn-d'}" style="width:100%" onclick="${u?`buyBox('${p.id}')`:'regBox()'}">${u?'สมัครแพ็กเกจนี้':'สมัครสมาชิกก่อน'}</button></div>`).join('')}</div>`}).join('')}
+ <div class="card" style="margin-top:20px;border:1.5px solid var(--br3)">
+  <h2>ช่องทางชำระเงิน</h2>
+  <div class="grid g3">
+   <div><div class="mu">ธนาคาร</div><b>${esc(D.settings.bank.bank||'-')}</b></div>
+   <div><div class="mu">เลขที่บัญชี</div><b style="font-size:18px;color:var(--br)">${esc(D.settings.bank.acc||'-')}</b></div>
+   <div><div class="mu">ชื่อบัญชี</div><b>${esc(D.settings.bank.name||'-')}</b></div></div>
+  <p class="mu" style="margin-top:12px">โอนแล้วกด "สมัครแพ็กเกจนี้" เพื่อกรอกข้อมูลและแนบสลิป ผู้ดูแลจะตรวจสอบและเปิดสิทธิ์ภายใน 24 ชั่วโมง</p></div>
+ ${ctaHTML()}`}
+let slipTmp=null,curPromo=null,discNow=0,codeNow='';
+function buyBox(pid){
+ const p=D.promos.find(x=>x.id===pid),u=me();slipTmp=null;curPromo=p;discNow=0;codeNow='';
+ modal(`<h2>สมัคร: ${esc(p.title)}</h2>
+ <div style="background:var(--lt);border:1px solid var(--bd);border-radius:12px;padding:13px;margin-top:10px;font-size:13.5px;line-height:1.9">
+  <b style="color:var(--br)">โอนเงินเข้าบัญชี</b><br>${esc(D.settings.bank.bank)}<br>
+  เลขที่ <b style="font-size:17px;color:var(--br)">${esc(D.settings.bank.acc)}</b><br>ชื่อบัญชี ${esc(D.settings.bank.name)}</div>
+ <div class="row2"><div><label>ชื่อ</label><input id="bn" value="${esc(u.name)}"></div><div><label>นามสกุล</label><input id="bs" value="${esc(u.sur||'')}"></div></div>
+ <label>เบอร์โทรติดต่อกลับ</label><input id="bt" value="${esc(u.tel||'')}">
+ <label>โค้ดส่วนลด (ถ้ามี)</label>
+ <div style="display:flex;gap:8px"><input id="bc" placeholder="เช่น NEW100" style="flex:1"><button class="btn btn-o btn-s" onclick="useCode()">ใช้โค้ด</button></div>
+ <div id="sum" style="background:var(--lt);border:1.5px solid var(--bd);border-radius:12px;padding:12px;margin-top:13px;font-size:14.5px">
+  ราคาแพ็กเกจ <b style="float:right">฿${nf(p.price)}</b></div>
+ <label>แนบสลิปการโอนเงิน</label><input type="file" accept="image/*" onchange="slipPick(this)">
+ <div id="sp" class="mu" style="font-size:12px;margin-top:6px">ยังไม่ได้แนบสลิป</div>
+ <button class="btn btn-p" style="width:100%;margin-top:16px" onclick="sendPay('${p.id}')">ส่งข้อมูลให้ผู้ดูแลตรวจสอบ</button>
+ <button class="btn btn-o" style="width:100%;margin-top:8px" onclick="cm()">ยกเลิก</button>`,true)}
+function useCode(){
+ const c=v('bc').toUpperCase(),p=curPromo,box=document.getElementById('sum');
+ const cp=D.coupons.find(x=>x.code.toUpperCase()===c);
+ if(!cp){discNow=0;codeNow='';box.innerHTML=`ราคาแพ็กเกจ <b style="float:right">฿${nf(p.price)}</b><div style="color:var(--bad);font-size:12.5px;margin-top:6px">ไม่พบโค้ดนี้</div>`;return}
+ discNow=Math.min(cp.type==='pct'?Math.round(p.price*cp.val/100):cp.val,p.price);codeNow=cp.code;
+ box.innerHTML=`ราคาแพ็กเกจ <b style="float:right">฿${nf(p.price)}</b>
+  <div style="color:var(--ok);margin-top:6px">โค้ด ${esc(cp.code)} <b style="float:right">− ฿${nf(discNow)}</b></div>
+  <div style="border-top:1px dashed var(--bd);margin-top:8px;padding-top:8px;font-weight:800">ยอดชำระ <b style="float:right;color:var(--br);font-size:18px">฿${nf(p.price-discNow)}</b></div>`;
+ toast('ใช้โค้ดส่วนลดแล้ว')}
+function slipPick(el){const f=el.files[0];if(!f)return;
+ if(f.size>2*1024*1024)return toast('ไฟล์ใหญ่เกิน 2 MB');
+ const r=new FileReader();r.onload=()=>{slipTmp=r.result;document.getElementById('sp').innerHTML=`<span style="color:var(--ok)">แนบสลิปแล้ว: ${esc(f.name)}</span>`};r.readAsDataURL(f)}
+function sendPay(pid){
+ const p=D.promos.find(x=>x.id===pid),u=me(),n=v('bn'),s=v('bs'),t=v('bt');
+ if(!n||!t)return toast('กรอกชื่อและเบอร์โทร');
+ if(!slipTmp)return toast('กรุณาแนบสลิปการโอนเงิน');
+ D.payments.unshift({id:uid(),userId:u.id,code:u.code,name:n+' '+s,tel:t,email:u.email,
+  promo:p.title,tr:p.tr,per:p.per,price:p.price,disc:discNow,total:p.price-discNow,coupon:codeNow,
+  slip:slipTmp,status:'pending',createdAt:Date.now()});
+ save();cm();slipTmp=null;discNow=0;codeNow='';
+ modal(`<div style="text-align:center">${IC('badge',64)}<h2 style="margin-top:10px">ส่งข้อมูลเรียบร้อย</h2>
+  <p class="mu">ผู้ดูแลจะตรวจสอบสลิปและเปิดสิทธิ์ให้ภายใน 24 ชั่วโมง<br>ติดต่อสอบถาม ${esc(D.settings.contact)}</p></div>
+  <button class="btn btn-p" style="width:100%;margin-top:16px" onclick="cm();go('home')">กลับหน้าแรก</button>`)}
+
+/* ============ PRACTICE ============ */
+function lock(msg){modal(`<div style="text-align:center">${IC('badge',62)}<h2 style="margin-top:10px">ฟีเจอร์สำหรับสมาชิก</h2>
+ <p class="mu">${msg||`โหมดนี้เปิดให้เฉพาะสมาชิกที่ชำระเงินแล้ว<br>ผู้ทดลองใช้ทำได้เฉพาะชุดเล็กวันละ ${D.settings.freeSet} ชุด (${D.settings.freeQ} ข้อ)`}</p></div>
+ <button class="btn btn-p" style="width:100%;margin-top:16px" onclick="cm();go('pricing')">ดูแพ็กเกจสมาชิก</button>
+ <button class="btn btn-o" style="width:100%;margin-top:8px" onclick="cm()">ปิด</button>`)}
+function freeLeft(){const u=me();u.trial=u.trial||{d:'',n:0};
+ if(u.trial.d!==tday())u.trial={d:tday(),n:0};
+ return Math.max(0,D.settings.freeSet-u.trial.n)}
+function useFree(){const u=me();u.trial.d=tday();u.trial.n++;save()}
+function vPractice(){
+ const u=me(),t=TR(cur),pro=isPro(u),lns=LNSof(cur);
+ if(!curLn){
+  return `<h1>เลือกสายงานก่อนเริ่มฝึก</h1>
+  <p class="mu" style="margin-bottom:16px">ข้อสอบแต่ละสายงานมีวิชาและจำนวนข้อไม่เหมือนกัน กรุณาเลือกสายงานที่คุณสมัครสอบ</p>
+  <div class="grid g3">${lns.map(l=>`<div class="card sj" onclick="curLn='${l.id}';render()">${IC(l.icon,46)}
+   <h3 style="margin:10px 0 4px">${esc(l.name)}</h3>
+   <div class="mu">${MOCKSUB(cur,l.id).length} วิชา · รวม ${TOT(cur,l.id)} ข้อ</div>
+   <div style="margin-top:9px">${MOCKSUB(cur,l.id).map(s=>`<span class="chip">${esc(s.short)} ${s.n}</span>`).join('')}</div></div>`).join('')}</div>`}
+ const S=MOCKSUB(cur,curLn),old=OLDSUB(cur),oldSets=old?SETS(old.id):[];
+ return `<div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap">
+  <h1 style="flex:1">ฝึกทำข้อสอบ — ${esc(LN(curLn).name)}</h1>
+  <button class="btn btn-o btn-s" onclick="curLn='';render()">เปลี่ยนสายงาน</button></div>
+ <p class="mu" style="margin:8px 0 16px">สาย${esc(t.name)} · ${pro?`สมาชิกเต็มรูปแบบ ทำได้ไม่จำกัด`:`โหมดทดลองฟรี เหลือสิทธิ์วันนี้ <b style="color:var(--br)">${freeLeft()}</b> ชุด`}</p>
+
+ <div class="card" style="margin-bottom:15px"><h2 style="display:flex;align-items:center;gap:9px">${IC('star',26)} ชุดเล็กสุ่มจากคลัง — ฟรีทุกคน</h2>
+  <p class="mu">สุ่มข้อสอบจากคลังของสายงานนี้ คละทุกวิชาและระดับความยาก</p>
+  <div style="display:flex;gap:9px;flex-wrap:wrap;margin-top:12px">
+   <button class="btn btn-p" onclick="tryStart({mode:'quick',count:${D.settings.freeQ},min:${D.settings.freeQ},title:'ชุดเล็ก ${D.settings.freeQ} ข้อ (สุ่ม)'},0)">${D.settings.freeQ} ข้อ · ${D.settings.freeQ} นาที${pro?'':' (ฟรี)'}</button>
+   <button class="btn btn-d" onclick="tryStart({mode:'quick',count:20,min:20,title:'ชุดเล็ก 20 ข้อ (สุ่ม)'},1)">20 ข้อ ${pro?'':'🔒'}</button>
+   <button class="btn btn-d" onclick="tryStart({mode:'quick',count:30,min:30,title:'ชุดเล็ก 30 ข้อ (สุ่ม)'},1)">30 ข้อ ${pro?'':'🔒'}</button></div></div>
+
+ <div class="card ${pro?'':'lk'}" style="margin-bottom:15px"><h2 style="display:flex;align-items:center;gap:9px">${IC('book',26)} เจาะรายวิชา — ชุดข้อสอบคงที่</h2>
+  <p class="mu">แต่ละชุดเป็นข้อสอบชุดเดิมทุกครั้ง (ไม่สุ่ม) ทำซ้ำเพื่อวัดว่าคะแนนดีขึ้นหรือไม่</p>
+  <div class="grid g3" style="margin-top:12px">${S.map(s=>{const st=SETS(s.id);
+   return `<div class="card sj" onclick="${pro?`setBox('${s.id}')`:'lock()'}">${IC(s.icon,34)}
+   <h3 style="margin:7px 0;font-size:14.6px">${s.or}. ${esc(s.name)}</h3>
+   <div class="mu" style="font-size:12.3px">สนามจริง ${s.n} ข้อ · คลัง ${D.questions.filter(q=>q.subj===s.id&&q.active).length} ข้อ</div>
+   <div style="margin-top:7px">${st.length?st.slice(0,6).map(x=>`<span class="chip">ชุด ${esc(x)}</span>`).join(''):'<span class="chip bad">ยังไม่มีข้อสอบ</span>'}</div>
+   <div class="bar"><i style="width:${aS(s.id)}%"></i></div></div>`}).join('')}</div></div>
+
+ ${old?`<div class="card ${pro?'':'lk'}" style="margin-bottom:15px;border:1.5px solid var(--br3)">
+  <h2 style="display:flex;align-items:center;gap:9px">${IC('star',26)} ${esc(old.name)}</h2>
+  <p class="mu">คลังข้อสอบเก่าย้อนหลัง แยกเป็นชุด — ไม่ถูกนำไปใช้ในสนามสอบจำลอง 150 ข้อ</p>
+  <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:12px">
+   ${oldSets.length?oldSets.map(x=>{const n=D.questions.filter(q=>q.subj===old.id&&q.set===x&&q.active).length;
+    return `<button class="btn btn-o btn-s" onclick="${pro?`startExam({mode:'set',subs:['${old.id}'],set:'${esc(x)}',count:${n},min:${n},title:'ข้อสอบเก่า ชุดที่ ${esc(x)}'})`:'lock()'}">ชุด ${esc(x)} (${n} ข้อ)</button>`}).join('')
+    :'<span class="mu">ยังไม่มีข้อสอบเก่าในระบบ</span>'}</div></div>`:''}
+
+ <div class="card ${pro?'':'lk'}" style="border:2px solid var(--br3)"><h2 style="display:flex;align-items:center;gap:9px">${IC('badge',26)} จำลองสนามสอบจริง</h2>
+  <p class="mu">${TOT(cur,curLn)} ข้อ · ${t.min} นาที (3 ชั่วโมง) · เกณฑ์ ${t.pass}% ตัวจริง / ${t.res}% ตัวสำรอง · ไม่รวมข้อสอบเก่า</p>
+  <div class="tw"><table style="margin:11px 0"><tr><th>ลำดับ</th><th>วิชา</th><th>กลุ่ม</th><th style="text-align:right">ข้อ</th></tr>
+   ${S.map(s=>`<tr><td>${s.or}</td><td>${esc(s.name)}</td><td><span class="chip ${s.grp==='A'?'w':''}">${s.grp}</span></td><td style="text-align:right"><b>${s.n}</b></td></tr>`).join('')}
+   <tr><td colspan="3"><b>รวม</b></td><td style="text-align:right"><b>${TOT(cur,curLn)} ข้อ</b></td></tr></table></div>
+  <button class="btn btn-p" onclick="tryStart({mode:'full',count:${TOT(cur,curLn)},min:${t.min},title:'การสอบข้อเขียน (สนามจำลอง)'},1)">เริ่มสอบจำลอง ${pro?'':'🔒 เฉพาะสมาชิก'}</button></div>`}
+function tryStart(cfg,needPro){
+ const u=me();
+ if(needPro&&!isPro(u))return lock();
+ if(!isPro(u)){if(freeLeft()<=0)return lock(`ใช้สิทธิ์ฟรีครบ ${D.settings.freeSet} ชุดแล้ววันนี้<br>กลับมาใหม่พรุ่งนี้ หรือสมัครสมาชิกเพื่อทำไม่จำกัด`);useFree()}
+ startExam(cfg)}
+function setBox(sid){
+ const s=sbj(sid),st=SETS(sid);
+ if(!st.length)return toast('ยังไม่มีข้อสอบในวิชานี้');
+ modal(`<div style="display:flex;align-items:center;gap:12px">${IC(s.icon,46)}<div><h2 style="margin:0;font-size:17px">${esc(s.name)}</h2>
+  <span class="mu">มี ${st.length} ชุด · ข้อสอบชุดเดิมทุกครั้ง</span></div></div>
+ <label>เลือกชุดข้อสอบ</label>
+ <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:8px">
+  ${st.map(x=>{const n=D.questions.filter(q=>q.subj===sid&&q.set===x&&q.active).length;
+   return `<button class="btn btn-o btn-s" onclick="cm();startExam({mode:'set',subs:['${sid}'],set:'${esc(x)}',count:${n},min:${n},title:'${esc(s.name)} ชุดที่ ${esc(x)}'})">ชุด ${esc(x)} (${n} ข้อ)</button>`}).join('')}</div>
+ <div class="mu" style="font-size:12.3px;margin-top:12px">ทำชุดเดิมซ้ำได้ไม่จำกัด ระบบจะเก็บสถิติทุกครั้งให้เปรียบเทียบคะแนน</div>
+ <button class="btn btn-o" style="width:100%;margin-top:14px" onclick="cm()">ปิด</button>`)}
+
+/* ============ EXAM ENGINE ============ */
+function drawRandom(pool,n){
+ const mix=D.settings.mix,tt=(mix.e+mix.m+mix.h)||100;
+ const want={e:Math.round(n*mix.e/tt),m:Math.round(n*mix.m/tt),h:Math.round(n*mix.h/tt)};
+ const bank={e:shuf(pool.filter(q=>q.diff==='e')),m:shuf(pool.filter(q=>q.diff==='m')),h:shuf(pool.filter(q=>q.diff==='h'))};
+ let pk=[];['e','m','h'].forEach(k=>{const b=bank[k];for(let i=0;i<want[k];i++){if(!b.length)break;pk.push(b[i%b.length])}});
+ const rest=shuf(pool);let i=0;while(pk.length<n&&rest.length){pk.push(rest[i%rest.length]);i++}
+ return shuf(pk).slice(0,n)}
+const mapQ=(s,mix)=>{if(mix){const m=shuf(s.o.map((t,j)=>({t,ok:j===s.a})));
+  return{subj:s.subj,q:s.q,o:m.map(p=>p.t),a:m.findIndex(p=>p.ok),e:s.e,diff:s.diff,set:s.set}}
+ return{subj:s.subj,q:s.q,o:s.o.slice(),a:s.a,e:s.e,diff:s.diff,set:s.set}};
+function startExam(c){
+ let qs=[];
+ if(c.mode==='full'){
+  MOCKSUB(cur,curLn).forEach(s=>{const pool=D.questions.filter(q=>q.subj===s.id&&q.active);
+   if(pool.length)qs.push(...drawRandom(pool,+s.n).map(x=>mapQ(x,true)))})}
+ else if(c.mode==='quick'){
+  const ids=MOCKSUB(cur,curLn).map(s=>s.id);
+  const pool=D.questions.filter(q=>ids.includes(q.subj)&&q.active);
+  qs=drawRandom(pool,c.count).map(x=>mapQ(x,true))}
+ else{ /* set : คงที่ ไม่สุ่ม */
+  const pool=D.questions.filter(q=>q.subj===c.subs[0]&&q.set===c.set&&q.active).sort((a,b)=>(a.ord||0)-(b.ord||0));
+  qs=pool.map(x=>mapQ(x,false))}
+ if(!qs.length)return toast('ยังไม่มีข้อสอบในสายงาน/วิชานี้');
+ exam={...c,tr:cur,ln:curLn,qs,ans:Array(qs.length).fill(null),idx:0,left:(c.min||qs.length)*60,started:Date.now()};
+ go('exam')}
+function startT(){if(tid)clearInterval(tid);
+ tid=setInterval(()=>{if(!exam)return clearInterval(tid);exam.left--;
+  const t=document.getElementById('tm');if(t){t.textContent=fmt(exam.left);t.classList.toggle('dg',exam.left<300)}
+  if(exam.left<=0){clearInterval(tid);toast('หมดเวลา! ส่งข้อสอบอัตโนมัติ');submitEx()}},1000)}
+function vExam(){
+ const e=exam,q=e.qs[e.idx],an=e.ans.filter(a=>a!==null).length,u=me();
+ return `<div class="eb">${IC('badge',24)}
+  <div><div style="font-size:11.5px;color:#ffe4cf">${esc(e.title)} · ${esc(LN(e.ln)?.name||TR(e.tr).name)}</div><b>ข้อ ${e.idx+1} / ${e.qs.length}</b></div>
+  <div class="sp"></div><div style="text-align:right"><div style="font-size:11.5px;color:#ffe4cf">เวลาคงเหลือ</div><span class="tm" id="tm">${fmt(e.left)}</span></div>
+  <button class="btn btn-p btn-s" style="background:#fff;color:var(--br)" onclick="askSub()">ส่งข้อสอบ (${an}/${e.qs.length})</button></div>
+ <div class="exl"><div>
+  <div class="qb"><div class="qn">${esc(sbj(q.subj).name)} • ชุด ${esc(q.set||'-')} • ข้อที่ ${e.idx+1} • ${DL[q.diff]||''}</div>
+   <div class="qt">${esc(q.q)}</div>
+   ${q.o.map((o,i)=>`<div class="op ${e.ans[e.idx]===i?'se':''}" onclick="pick(${i})"><b>${'กขคง'[i]}</b><span>${esc(o)}</span></div>`).join('')}</div>
+  <div style="display:flex;gap:9px;flex-wrap:wrap">
+   <button class="btn btn-o" onclick="nv(-1)" ${e.idx===0?'disabled':''}>← ก่อนหน้า</button>
+   <button class="btn btn-d" onclick="nv(1)" ${e.idx===e.qs.length-1?'disabled':''}>ถัดไป →</button>
+   <div class="sp"></div><button class="btn btn-o btn-s" onclick="exam.ans[exam.idx]=null;render()">ล้างคำตอบ</button></div></div>
+  <div class="omr">
+   <div class="omr-h"><div class="t">${esc(D.settings.appName)}</div>
+    <div class="s">${esc(D.settings.omrTitle)}<br>ชื่อ: <b>${esc(u.name+' '+(u.sur||''))}</b><br>วันที่: <b>${thF(Date.now())}</b></div></div>
+   <div class="omr-c"><span>ก</span><span>ข</span><span>ค</span><span>ง</span></div>
+   <div class="omr-l">${e.qs.map((_,i)=>`<div class="omr-r ${i===e.idx?'now':''}">
+    <div class="no" onclick="exam.idx=${i};render()">${i+1}.</div>
+    ${[0,1,2,3].map(j=>`<div class="bb ${e.ans[i]===j?'f':''}" onclick="fill(${i},${j})">${'กขคง'[j]}</div>`).join('')}</div>`).join('')}</div>
+   <div class="omr-ft">ฝนแล้ว ${an} / ${e.qs.length} ข้อ</div></div></div>`}
+function fill(i,j){exam.idx=i;exam.ans[i]=exam.ans[i]===j?null:j;render()}
+function pick(i){exam.ans[exam.idx]=i;if(exam.idx<exam.qs.length-1)setTimeout(()=>{exam.idx++;render()},120);else render()}
+function nv(d){exam.idx=Math.max(0,Math.min(exam.qs.length-1,exam.idx+d));render()}
+function askSub(){const l=exam.ans.filter(a=>a===null).length;
+ modal(`<h2>ยืนยันส่งข้อสอบ?</h2><p class="mu">${l?`ยังไม่ได้ฝนอีก <b style="color:var(--bad)">${l}</b> ข้อ (นับเป็นผิด)`:'ฝนครบทุกข้อแล้ว'}</p>
+ <button class="btn btn-p" style="width:100%;margin-top:14px" onclick="cm();submitEx()">ส่งข้อสอบ</button>
+ <button class="btn btn-o" style="width:100%;margin-top:8px" onclick="cm()">ทำต่อ</button>`)}
+function submitEx(){
+ if(tid){clearInterval(tid);tid=null}
+ const per={};let sc=0;
+ exam.qs.forEach((q,i)=>{per[q.subj]=per[q.subj]||{c:0,t:0};per[q.subj].t++;if(exam.ans[i]===q.a){sc++;per[q.subj].c++}});
+ const u=me(),t=TR(exam.tr),pct=+(sc/exam.qs.length*100).toFixed(2);
+ const rank=Math.max(1,Math.round((1-pct/100)*(t.field||1500))+1);
+ exam.r={score:sc,total:exam.qs.length,per,pct,rank,at:Date.now()};
+ u.history.unshift({date:Date.now(),tr:exam.tr,ln:exam.ln,mode:exam.mode,title:exam.title,score:sc,total:exam.qs.length,per,pct,rank});
+ u.history=u.history.slice(0,200);save();go('result')}
+
+/* ============ RESULT ============ */
+function vResult(){
+ const r=exam.r,u=me(),t=TR(exam.tr);
+ const S=exam.mode==='full'?MOCKSUB(exam.tr,exam.ln):Object.keys(r.per).map(id=>sbj(id));
+ const gA=S.filter(s=>s.grp==='A'),gB=S.filter(s=>s.grp!=='A');
+ const get=id=>r.per[id]?r.per[id].c:0;
+ const sA=gA.reduce((a,s)=>a+get(s.id),0),sB=gB.reduce((a,s)=>a+get(s.id),0);
+ const nA=gA.reduce((a,s)=>a+(r.per[s.id]?.t||0),0),nB=gB.reduce((a,s)=>a+(r.per[s.id]?.t||0),0);
+ const pA=nA?+(sA/nA*100).toFixed(2):0,pB=nB?+(sB/nB*100).toFixed(2):0;
+ const tot=sA+sB,pct=+(tot/r.total*100).toFixed(2);
+ const lA='('+gA.map(s=>s.or).join('+')+')',lB='('+gB.map(s=>s.or).join('+')+')';
+ const pass=pct>=t.pass,res=pct>=t.res;
+ const vd=pass?'ตัวจริง<br>(อยู่ในกลุ่มให้เข้าสอบ<br>ภาคความเหมาะสมกับตำแหน่ง)'
+  :res?'ตัวสำรอง<br>(อยู่ในกลุ่มให้เข้าสอบ<br>ภาคความเหมาะสมกับตำแหน่ง)':'ไม่ผ่านเกณฑ์';
+ const prev=u.history.filter(h=>h.title===exam.title).slice(1,2)[0];
+ return `${prev?`<div class="warn np" style="max-width:930px;margin:0 auto 14px">${IC('star',24)}
+  <div>ครั้งก่อนของชุดนี้ได้ <b>${prev.score}/${prev.total}</b> (${prev.pct.toFixed(2)}%) · ครั้งนี้ <b>${r.score}/${r.total}</b> (${pct.toFixed(2)}%)
+  — ${pct>prev.pct?'<b style="color:var(--ok)">ดีขึ้น '+(pct-prev.pct).toFixed(2)+'%</b>':pct<prev.pct?'<b style="color:var(--bad)">ลดลง '+(prev.pct-pct).toFixed(2)+'%</b>':'เท่าเดิม'}</div></div>`:''}
+ <div class="rs"><div class="rs-h">ผลการค้นหา</div><div class="rs-b">
+  <div class="rs-i">
+   <div><span>ชื่อ - สกุล</span><b>${esc(u.name+' '+(u.sur||''))}</b></div>
+   <div><span>รหัสสอบ</span><b>${esc(u.code)}</b></div>
+   <div><span>วันที่ทำข้อสอบ</span><b>${thF(r.at)}</b></div>
+   <div><span>หน่วยที่นั่งเขียนสอบ</span><b>${esc(D.settings.examRoom)}</b></div></div>
+  <div class="tw"><table class="rt"><tr>
+   ${gA.map(s=>`<th>${s.or}. ${esc(s.short)}<br>(${r.per[s.id]?.t||s.n})</th>`).join('')}
+   ${gA.length?`<th class="g">รวม<br>${lA}</th><th class="g">ร้อยละ<br>${lA}</th>`:''}
+   ${gB.map(s=>`<th>${s.or}. ${esc(s.short)}<br>(${r.per[s.id]?.t||s.n})</th>`).join('')}
+   ${gB.length?`<th class="r">รวม<br>${lB}</th><th class="r">ร้อยละ<br>${lB}</th>`:''}</tr>
+   <tr>${gA.map(s=>`<td>${get(s.id)}</td>`).join('')}${gA.length?`<td>${sA}</td><td>${pA.toFixed(2)}</td>`:''}
+   ${gB.map(s=>`<td>${get(s.id)}</td>`).join('')}${gB.length?`<td>${sB}</td><td>${pB.toFixed(2)}</td>`:''}</tr></table></div>
+  <div class="tw" style="margin-top:14px"><table class="rt">
+   <tr><th class="g">คะแนนเพิ่ม</th><th class="r">รวมคะแนนทั้งหมด</th><th class="r">รวมร้อยละ</th><th class="r">ลำดับที่ได้</th><th class="r">ผลสอบข้อเขียน</th></tr>
+   <tr><td>-</td><td style="color:var(--bad);font-weight:800">${tot}</td><td style="color:var(--bad);font-weight:800">${pct.toFixed(2)}</td>
+   <td style="color:var(--bad);font-weight:800">${r.rank}</td><td><span class="vd ${pass||res?'pass':''}">${vd}</span></td></tr></table></div>
+  <div style="text-align:center;margin-top:20px" class="np"><button class="btn btn-d" onclick="window.print()">พิมพ์ใบรายงานผลการสอบข้อเขียน</button></div>
+ </div></div>
+ <div class="np" style="text-align:center;margin-top:18px">
+  <button class="btn btn-o" onclick="review()">ดูเฉลยละเอียดทุกข้อ</button>
+  <button class="btn btn-p" onclick="go('practice')">ทำชุดใหม่</button></div>
+ <div class="sec-t"><h2>คะแนนรายวิชา</h2></div>
+ <div class="card"><div class="tw"><table><tr><th>วิชา</th><th>ถูก/ทั้งหมด</th><th>ร้อยละ</th><th>ประเมิน</th></tr>
+ ${S.filter(s=>r.per[s.id]).map(s=>{const vv=r.per[s.id],pc=Math.round(vv.c/vv.t*100);
+  return `<tr><td>${esc(s.name)}</td><td>${vv.c}/${vv.t}</td>
+  <td><b style="color:${pc>=t.pass?'var(--ok)':pc>=t.res?'var(--wn)':'var(--bad)'}">${pc}%</b><div class="bar" style="width:80px"><i style="width:${pc}%"></i></div></td>
+  <td class="mu">${pc>=t.pass?'ผ่านเกณฑ์':pc>=t.res?'พอใช้ ควรทบทวน':'ต้องเร่งปรับปรุง'}</td></tr>`}).join('')}
+ </table></div></div>`}
+function review(){
+ const L=exam.qs.map((q,i)=>({q,i})).sort((a,b)=>(exam.ans[a.i]!==a.q.a?0:1)-(exam.ans[b.i]!==b.q.a?0:1));
+ document.getElementById('app').innerHTML=`<button class="btn btn-o btn-s" onclick="go('result')">← กลับหน้าผลสอบ</button>
+ <h1 style="margin:14px 0">เฉลยละเอียด <span class="mu" style="font-size:14px">(ข้อที่ผิดขึ้นก่อน)</span></h1>
+ ${L.map(({q,i})=>{const my=exam.ans[i],ok=my===q.a;
+  return `<div class="qb"><div class="qn">${ok?'✅ ถูก':'❌ ผิด'} • ข้อ ${i+1} • ${esc(sbj(q.subj).name)} • ชุด ${esc(q.set||'-')}</div>
+  <div class="qt">${esc(q.q)}</div>
+  ${q.o.map((o,j)=>`<div class="op ${j===q.a?'ri':(j===my?'wr':'')}"><b>${'กขคง'[j]}</b><span>${esc(o)}${j===my?' <i class="mu">(คุณตอบ)</i>':''}</span></div>`).join('')}
+  <div class="ex"><b>เฉลย ${'กขคง'[q.a]}</b> — ${esc(q.e)}</div></div>`}).join('')}`;
+ scrollTo(0,0)}
+
+/* ============ LEARN / STATS / PROFILE ============ */
+function vLearn(){const ls=D.lessons.filter(l=>l.tr===cur);
+ return `<h1>คลังความรู้ — สาย${esc(TR(cur).short)}</h1><p class="mu" style="margin-bottom:16px">สรุปเนื้อหาสำหรับอ่านทบทวน</p>
+ ${SUBof(cur,'',true).map(s=>{const L=ls.filter(l=>l.subj===s.id);if(!L.length)return '';
+  return `<div class="sec-t">${IC(s.icon,26)}<h2>${esc(s.name)}</h2></div><div class="grid g2">
+  ${L.map(l=>{const lk=!l.free&&!isPro(me());
+   return `<div class="card sj ${lk?'lk':''}" onclick="${lk?'lock()':`opL('${l.id}')`}">
+   <h3>${esc(l.t)}</h3><div class="mu" style="margin-top:5px">${esc((l.b||'').split('\n')[0]).slice(0,70)}…</div>
+   <div style="margin-top:9px"><span class="chip ${l.free?'ok':''}">${l.free?'อ่านฟรี':'สมาชิก'}</span></div></div>`}).join('')}</div>`}).join('')
+  ||'<div class="card mu">ยังไม่มีบทเรียนในสายนี้</div>'}`}
+function opL(id){const l=D.lessons.find(x=>x.id===id);
+ modal(`<h2>${esc(l.t)}</h2><div class="mu">${esc(sbj(l.subj).name)}</div>
+ <div style="white-space:pre-wrap;font-size:14.5px;line-height:1.95;margin-top:14px">${esc(l.b)}</div>
+ <button class="btn btn-o" style="width:100%;margin-top:16px" onclick="cm()">ปิด</button>`,true)}
+const cS=id=>me().history.reduce((a,h)=>a+((h.per[id]?.t)||0),0);
+function aS(id){let c=0,t=0;me()?.history.forEach(h=>{if(h.per[id]){c+=h.per[id].c;t+=h.per[id].t}});return t?Math.round(c/t*100):0}
+function vStats(){
+ const u=me(),t=TR(cur),H=u.history.filter(h=>h.tr===cur);
+ if(!H.length)return `<div class="card" style="text-align:center;padding:46px">${IC('car',76)}<h2 style="margin-top:10px">ยังไม่มีสถิติในสายนี้</h2>
+  <p class="mu">เริ่มทำข้อสอบชุดแรกเพื่อดูการวิเคราะห์จุดอ่อน</p><button class="btn btn-p" style="margin-top:14px" onclick="go('practice')">เริ่มทำข้อสอบ</button></div>`;
+ const tt=H.reduce((a,h)=>a+h.total,0),cc=H.reduce((a,h)=>a+h.score,0);
+ const subs=SUBof(cur,curLn,true);
+ const wk=[...subs].filter(s=>cS(s.id)>0).sort((a,b)=>aS(a.id)-aS(b.id))[0];
+ const ps=H.filter(h=>h.pct>=t.pass).length;
+ return `<h1>สถิติของฉัน — สาย${esc(t.short)}</h1>
+ <div class="grid g4" style="margin:16px 0">
+  <div class="card"><div class="mu">ทำข้อสอบสะสม</div><h1 style="font-size:26px">${tt} ข้อ</h1></div>
+  <div class="card"><div class="mu">ความแม่นยำรวม</div><h1 style="font-size:26px">${Math.round(cc/tt*100)}%</h1></div>
+  <div class="card"><div class="mu">ชุดที่ผ่าน ${t.pass}%</div><h1 style="font-size:26px;color:var(--ok)">${ps}/${H.length}</h1></div>
+  <div class="card"><div class="mu">จุดอ่อนที่ต้องแก้</div><h3 style="margin-top:6px">${wk?esc(wk.short)+' ('+aS(wk.id)+'%)':'-'}</h3></div></div>
+ <div class="sec-t"><h2>ความแม่นยำรายวิชา</h2></div>
+ <div class="card">${subs.map(s=>`<div style="margin-bottom:12px">
+  <div style="display:flex;justify-content:space-between;font-size:13.8px"><span>${esc(s.name)}</span><b>${aS(s.id)}% <span class="mu" style="font-weight:400">(${cS(s.id)} ข้อ)</span></b></div>
+  <div class="bar"><i style="width:${aS(s.id)}%"></i></div></div>`).join('')}</div>
+ <div class="sec-t"><h2>ประวัติการสอบ</h2></div>
+ <div class="card"><div class="tw"><table><tr><th>วันที่</th><th>ชุด</th><th>คะแนน</th><th>ร้อยละ</th><th>ผล</th></tr>
+ ${H.slice(0,30).map(h=>`<tr><td>${thDT(h.date)}</td><td>${esc(h.title)}</td><td>${h.score}/${h.total}</td>
+  <td><b>${(h.pct||0).toFixed(2)}</b></td>
+  <td><span class="chip ${h.pct>=t.pass?'ok':h.pct>=t.res?'w':'bad'}">${h.pct>=t.pass?'ตัวจริง':h.pct>=t.res?'ตัวสำรอง':'ไม่ผ่าน'}</span></td></tr>`).join('')}
+ </table></div></div>`}
+function prof(){const u=me(),mx=u.maxDev||D.settings.maxDevices,d=devId();
+ modal(`<div style="text-align:center">${IC('cop',66)}<h2 style="margin-top:6px">${esc(u.name+' '+(u.sur||''))}</h2>
+ <span class="chip">${esc(u.code)}</span><span class="chip gy">${esc(u.email)}</span>
+ <span class="chip ${isPro(u)?'ok':'w'}">${u.role==='admin'?'ผู้ดูแล':isPro(u)?'สมาชิก':'ทดลองฟรี'}</span></div>
+ <div style="background:var(--lt);border-radius:12px;padding:13px;margin-top:14px;font-size:13.6px;line-height:1.85">
+ ${u.birth?`<div><b>วันเกิด:</b> ${thF(u.birth)}</div>`:''}
+ ${u.tel?`<div><b>โทร:</b> ${esc(u.tel)}</div>`:''}
+ ${D.tracks.map(t=>{const a=u.access?.[t.id];return `<div><b>สาย${esc(t.short)}:</b> ${a&&a.on&&a.expire&&Date.now()<a.expire?`<span class="chip ok">ถึง ${thD(a.expire)} (เหลือ ${dys(a.expire)} วัน)</span>`:'<span class="chip bad">ยังไม่เปิดสิทธิ์</span>'}</div>`}).join('')}
+ <div><b>ทำข้อสอบสะสม:</b> ${u.history.reduce((a,h)=>a+h.total,0)} ข้อ</div>
+ ${isPro(u)?'':`<div><b>สิทธิ์ฟรีวันนี้:</b> เหลือ ${freeLeft()} ชุด</div>`}</div>
+ <h3 style="margin-top:15px">อุปกรณ์ (${(u.devices||[]).length}/${mx})</h3>
+ ${(u.devices||[]).map((x,i)=>`<div class="dv">📱<div style="flex:1"><b>เครื่องที่ ${i+1}</b>${x.id===d?' <span class="chip ok">เครื่องนี้</span>':''}
+  <div class="mu" style="font-size:11.5px">${esc(x.name)} • ${thDT(x.at)}</div></div></div>`).join('')}
+ <button class="btn btn-d" style="width:100%;margin-top:14px" onclick="pwBox()">เปลี่ยนรหัสผ่าน</button>
+ ${isPro(u)?'':`<button class="btn btn-p" style="width:100%;margin-top:8px" onclick="cm();go('pricing')">สมัครสมาชิกเต็มรูปแบบ</button>`}
+ <button class="btn btn-o" style="width:100%;margin-top:8px" onclick="cm()">ปิด</button>`)}
+
+/* ============ ADMIN ============ */
+function vAdmin(){
+ if(!isAdm())return '<div class="card">ไม่มีสิทธิ์เข้าถึง</div>';
+ const pd=D.payments.filter(p=>p.status==='pending').length;
+ const T=[['pay',`อนุมัติการชำระ${pd?' ('+pd+')':''}`],['dash','ภาพรวม'],['u','สมาชิก'],['q','คลังข้อสอบ'],['qo','คลังข้อสอบเก่า'],['l','บทเรียน'],['md','สื่อหน้าแรก'],['cd','วันสอบ'],['bk','หนังสือ'],['pm','แพ็กเกจ/โค้ด'],['s','ตั้งค่าเว็บ'],['b','สำรองข้อมูล']];
+ return `<h1 style="display:flex;align-items:center;gap:12px">${IC('badge',40)} หลังบ้านผู้ดูแลระบบ</h1>
+ <p class="mu" style="margin-bottom:14px">จัดการสมาชิก การชำระเงิน คลังข้อสอบ และหน้าตาเว็บไซต์</p>
+ <div class="ab">${T.map(x=>`<button class="${tab===x[0]?'on':''}" onclick="tab='${x[0]}';render()">${x[1]}</button>`).join('')}</div>
+ ${({pay:aPay,dash:aDash,u:aU,q:()=>aQ(false),qo:()=>aQ(true),l:aL,md:aMd,cd:aCd,bk:aBk,pm:aPm,s:aSet,b:aB})[tab]()}`}
+function aPay(){
+ return `<div class="card"><h2>รายการแจ้งชำระเงิน (${D.payments.length})</h2>
+ <p class="mu">ตรวจสลิปแล้วกดอนุมัติ ระบบจะเปิดสิทธิ์และต่ออายุให้อัตโนมัติ</p></div>
+ <div class="card" style="margin-top:14px"><div class="tw"><table>
+ <tr><th>วันที่</th><th>ผู้สมัคร</th><th>แพ็กเกจ</th><th>ยอดชำระ</th><th>โค้ด</th><th>สลิป</th><th>สถานะ</th><th style="width:170px">จัดการ</th></tr>
+ ${D.payments.map(p=>`<tr>
+  <td class="mu">${thDT(p.createdAt)}</td>
+  <td><b>${esc(p.name)}</b><div class="mu" style="font-size:11.5px">${esc(p.code)} · ${esc(p.tel)}<br>${esc(p.email)}</div></td>
+  <td>${esc(p.promo)}<div class="mu" style="font-size:11.5px">สาย${esc(TR(p.tr).short)} · ${p.per==='y'?'รายปี':'รายเดือน'}</div></td>
+  <td><b style="color:var(--br)">฿${nf(p.total)}</b>${p.disc?`<div class="mu" style="font-size:11.5px">จาก ฿${nf(p.price)}</div>`:''}</td>
+  <td>${p.coupon?`<span class="chip w">${esc(p.coupon)}</span>`:'<span class="mu">—</span>'}</td>
+  <td>${p.slip?`<img class="slip" src="${p.slip}" onclick="viewSlip('${p.id}')" alt="">`:'<span class="mu">—</span>'}</td>
+  <td><span class="chip ${p.status==='ok'?'ok':p.status==='no'?'bad':'w'}">${p.status==='ok'?'อนุมัติแล้ว':p.status==='no'?'ปฏิเสธ':'รอตรวจสอบ'}</span></td>
+  <td>${p.status==='pending'?`<button class="btn btn-g btn-s" onclick="payOk('${p.id}')">อนุมัติ</button>
+   <button class="btn btn-r btn-s" onclick="payNo('${p.id}')">ปฏิเสธ</button>`
+   :`<button class="btn btn-r btn-s" onclick="D.payments=D.payments.filter(x=>x.id!=='${p.id}');save();render()">ลบ</button>`}</td></tr>`).join('')
+  ||'<tr><td colspan="8" class="mu" style="text-align:center;padding:28px">ยังไม่มีรายการแจ้งชำระเงิน</td></tr>'}
+ </table></div></div>`}
+function viewSlip(id){const p=D.payments.find(x=>x.id===id);
+ modal(`<h2>สลิปการโอนเงิน</h2><div class="mu">${esc(p.name)} · ฿${nf(p.total)} · ${thDT(p.createdAt)}</div>
+ <img src="${p.slip}" style="width:100%;border-radius:12px;margin-top:14px;border:1px solid var(--bd)" alt="">
+ <button class="btn btn-o" style="width:100%;margin-top:14px" onclick="cm()">ปิด</button>`,true)}
+function payOk(id){const p=D.payments.find(x=>x.id===id),u=D.users.find(x=>x.id===p.userId);
+ if(!u)return toast('ไม่พบสมาชิก');
+ const d=p.per==='y'?365:30;u.access=u.access||{};
+ const a=u.access[p.tr]||{on:false,expire:null};
+ const base=(a.expire&&a.expire>Date.now())?a.expire:Date.now();
+ u.access[p.tr]={on:true,expire:base+d*864e5};u.status='pro';p.status='ok';
+ save();render();toast(`อนุมัติแล้ว — ${u.name} ใช้สาย${TR(p.tr).short}ได้ถึง ${thD(u.access[p.tr].expire)}`)}
+function payNo(id){D.payments.find(x=>x.id===id).status='no';save();render();toast('ปฏิเสธรายการแล้ว')}
+function aDash(){
+ const us=D.users.filter(u=>u.role!=='admin');
+ const pro=us.filter(u=>anyAcc(u)).length;
+ const rev=D.payments.filter(p=>p.status==='ok').reduce((a,p)=>a+p.total,0);
+ return `<div class="grid g4" style="margin-bottom:18px">
+ <div class="kpi"><div class="mu">สมาชิกทั้งหมด</div><b>${us.length}</b></div>
+ <div class="kpi"><div class="mu">สมาชิกที่ชำระเงิน</div><b style="color:var(--ok)">${pro}</b></div>
+ <div class="kpi"><div class="mu">ทดลองใช้ฟรี</div><b style="color:var(--wn)">${us.length-pro}</b></div>
+ <div class="kpi"><div class="mu">รายได้รวม</div><b>฿${nf(rev)}</b></div>
+ <div class="kpi"><div class="mu">ข้อสอบทั้งหมด</div><b>${D.questions.length}</b></div>
+ <div class="kpi"><div class="mu">ข้อสอบเก่า</div><b>${D.questions.filter(q=>sbj(q.subj).old).length}</b></div></div>
+ ${D.tracks.map(t=>`<div class="sec-t">${IC(t.icon,28)}<h2>คลังข้อสอบ สาย${esc(t.short)}</h2></div>
+ <div class="grid g2">${LNSof(t.id).map(l=>`<div class="card"><h3 style="color:var(--br)">${esc(l.name)}</h3>
+  ${MOCKSUB(t.id,l.id).map(s=>{const n=D.questions.filter(q=>q.subj===s.id).length,nd=+s.n*2;
+   return `<div style="margin:9px 0"><div style="display:flex;justify-content:space-between;font-size:13px">
+   <span>${esc(s.short)} <span class="mu">(${SETS(s.id).length} ชุด)</span></span><b>${n}/${nd}</b></div>
+   <div class="bar"><i style="width:${Math.min(100,n/nd*100)}%"></i></div></div>`}).join('')}
+  <button class="btn btn-p btn-s" style="margin-top:8px" onclick="tab='q';qTr='${t.id}';qLn='${l.id}';render()">เพิ่มข้อสอบสายงานนี้</button></div>`).join('')}</div>`).join('')}`}
+function aU(){
+ return `<div class="card" style="margin-bottom:14px"><button class="btn btn-p" onclick="uEdit()">+ เพิ่มสมาชิกด้วยตนเอง</button></div>
+ <div class="card"><div class="tw"><table>
+ <tr><th>รหัส</th><th>ชื่อ-สกุล</th><th>อีเมล / โทร</th><th>สถานะ</th>${D.tracks.map(t=>`<th>${esc(t.short)}</th>`).join('')}<th style="width:250px">จัดการ</th></tr>
+ ${D.users.map(u=>`<tr style="${u.banned?'opacity:.5':''}">
+  <td><b>${esc(u.code||'-')}</b></td>
+  <td>${esc(u.name+' '+(u.sur||''))}${u.role==='admin'?' <span class="chip w">ผู้ดูแล</span>':''}</td>
+  <td class="mu" style="font-size:12px">${esc(u.email||'-')}<br>${esc(u.tel||'-')}</td>
+  <td><span class="chip ${anyAcc(u)?'ok':'w'}">${anyAcc(u)?'สมาชิก':'ทดลองฟรี'}</span></td>
+  ${D.tracks.map(t=>{const a=u.access?.[t.id];
+   return `<td>${a&&a.on&&a.expire>Date.now()?`<span class="chip ok">${thD(a.expire)}</span>`:'<span class="chip gy">—</span>'}
+   <div><button class="btn btn-g btn-s" style="margin-top:4px" onclick="ext('${u.id}','${t.id}',30)">+30</button>
+   <button class="btn btn-g btn-s" onclick="ext('${u.id}','${t.id}',365)">+1ปี</button></div></td>`}).join('')}
+  <td><button class="btn btn-o btn-s" onclick="uEdit('${u.id}')">แก้ไข</button>
+   <button class="btn btn-o btn-s" onclick="pwReset('${u.id}')">ตั้งรหัสผ่าน</button>
+   ${u.id===D.session?'':`<button class="btn btn-r btn-s" onclick="uBan('${u.id}')">${u.banned?'ปลด':'ระงับ'}</button>
+   <button class="btn btn-r btn-s" onclick="uDel('${u.id}')">ลบ</button>`}</td></tr>`).join('')}
+ </table></div></div>`}
+function uEdit(id){const u=id?D.users.find(x=>x.id===id):null;
+ modal(`<h2>${id?'แก้ไขสมาชิก':'เพิ่มสมาชิก'}</h2>
+ <label>รหัสสมาชิก (ใช้เป็นรหัสสอบ)</label><input id="uc" value="${esc(u?.code||'NH'+String(D.users.length+1).padStart(4,'0'))}">
+ <div class="row2"><div><label>ชื่อ</label><input id="un" value="${esc(u?.name||'')}"></div>
+ <div><label>นามสกุล</label><input id="us" value="${esc(u?.sur||'')}"></div></div>
+ <label>วันเกิด</label><input id="ubd" type="date" value="${esc(u?.birth||'')}">
+ <label>เบอร์โทร</label><input id="ut" value="${esc(u?.tel||'')}">
+ <label>อีเมล (ใช้ล็อกอิน)</label><input id="ue" value="${esc(u?.email||'')}">
+ ${!id?'<label>รหัสผ่านเริ่มต้น</label><input id="up" type="password">':''}
+ ${D.tracks.map(t=>{const a=u?.access?.[t.id];return `<div style="border:1.5px solid var(--bd);border-radius:12px;padding:12px;margin-top:12px">
+  <label style="margin:0;display:flex;align-items:center;gap:8px"><input type="checkbox" id="ea_${t.id}" style="width:auto;margin:0" ${a?.on?'checked':''}> <b>เปิดสิทธิ์สาย${esc(t.name)}</b></label>
+  <label>วันหมดอายุ</label><input id="ex_${t.id}" type="date" value="${a?.expire?new Date(a.expire).toISOString().slice(0,10):''}"></div>`}).join('')}
+ <label>จำนวนอุปกรณ์</label><input id="um" type="number" value="${u?.maxDev||D.settings.maxDevices}" min="1" max="9">
+ <label>บทบาท</label><select id="ur"><option value="user" ${u?.role!=='admin'?'selected':''}>สมาชิก</option><option value="admin" ${u?.role==='admin'?'selected':''}>ผู้ดูแลระบบ</option></select>
+ <button class="btn btn-p" style="width:100%;margin-top:16px" onclick="uSave('${id||''}')">บันทึก</button>
+ <button class="btn btn-o" style="width:100%;margin-top:8px" onclick="cm()">ยกเลิก</button>`,true)}
+async function uSave(id){
+ const n=v('un'),e=v('ue').toLowerCase();
+ if(!n||!e)return toast('กรอกชื่อและอีเมล');
+ if(D.users.some(x=>x.id!==id&&x.email===e))return toast('อีเมลนี้ถูกใช้แล้ว');
+ const acc={};D.tracks.forEach(t=>{const on=ck('ea_'+t.id),x=v('ex_'+t.id);
+  acc[t.id]={on,expire:x?new Date(x).getTime():(on?Date.now()+30*864e5:null)}});
+ const o={code:v('uc'),name:n,sur:v('us'),birth:v('ubd'),tel:v('ut'),email:e,access:acc,maxDev:+v('um')||2,role:v('ur')};
+ if(id)Object.assign(D.users.find(x=>x.id===id),o);
+ else{const p=v('up')||'123456',salt=uid();
+  D.users.push({id:uid(),...o,pass:await sha(p+salt),salt,status:'free',devices:[],banned:false,createdAt:Date.now(),history:[],trial:{d:'',n:0}})}
+ save();cm();render();toast('บันทึกแล้ว')}
+function ext(id,tr,d){const u=D.users.find(x=>x.id===id);u.access=u.access||{};
+ const a=u.access[tr]||{on:false,expire:null};
+ const base=(a.expire&&a.expire>Date.now())?a.expire:Date.now();
+ u.access[tr]={on:true,expire:base+d*864e5};u.status='pro';save();render();toast(`ต่ออายุสาย${TR(tr).short} อีก ${d} วัน`)}
+function uBan(id){const u=D.users.find(x=>x.id===id);u.banned=!u.banned;save();render()}
+function uDel(id){const u=D.users.find(x=>x.id===id);
+ modal(`<h2>ลบสมาชิก ${esc(u.name)}?</h2><p class="mu">ประวัติการสอบจะหายไปทั้งหมด</p>
+ <button class="btn btn-r" style="width:100%;margin-top:14px" onclick="D.users=D.users.filter(x=>x.id!=='${id}');save();cm();render();toast('ลบแล้ว')">ลบถาวร</button>
+ <button class="btn btn-o" style="width:100%;margin-top:8px" onclick="cm()">ยกเลิก</button>`)}
+/* ---- คลังข้อสอบ (แยกปกติ / ข้อสอบเก่า) ---- */
+function aQ(oldMode){
+ const oldSub=OLDSUB(qTr);
+ let subs,L;
+ if(oldMode){subs=oldSub?[oldSub]:[];L=D.questions.filter(q=>oldSub&&q.subj===oldSub.id)}
+ else{subs=qLn?MOCKSUB(qTr,qLn):D.subjects.filter(s=>s.tr===qTr&&!s.old);
+  L=D.questions.filter(q=>{const s=sbj(q.subj);return s.tr===qTr&&!s.old&&(!qLn||s.ln===qLn)})}
+ if(qF!=='all')L=L.filter(q=>q.subj===qF);
+ if(qSet)L=L.filter(q=>q.set===qSet);
+ if(qS)L=L.filter(q=>(q.q+q.o.join()+q.e).toLowerCase().includes(qS.toLowerCase()));
+ L=L.sort((a,b)=>(a.subj+a.set).localeCompare(b.subj+b.set)||(a.ord||0)-(b.ord||0));
+ const setList=qF!=='all'?SETS(qF):[];
+ return `<div class="seg">${D.tracks.map(t=>`<button class="${qTr===t.id?'on':''}" onclick="qTr='${t.id}';qLn='';qF='all';qSet='';render()">${IC(t.icon,24)} ${oldMode?'ข้อสอบเก่า':'ข้อสอบ'}สาย${esc(t.short)} (${oldMode?D.questions.filter(q=>sbj(q.subj).old&&sbj(q.subj).tr===t.id).length:D.questions.filter(q=>!sbj(q.subj).old&&sbj(q.subj).tr===t.id).length})</button>`).join('')}</div>
+ ${oldMode?`<div class="card" style="margin-bottom:14px;background:var(--lt)">
+  <b style="color:var(--br)">คลังข้อสอบเก่า สาย${esc(TR(qTr).short)}</b>
+  <div class="mu" style="margin-top:4px">ข้อสอบในหมวดนี้จะไม่ถูกนำไปใช้ในสนามสอบจำลอง 150 ข้อ และไม่ปนกับวิชาปกติ</div></div>`:''}
+ <div class="card" style="margin-bottom:14px"><div style="display:flex;gap:9px;flex-wrap:wrap;align-items:end">
+  ${oldMode?'':`<div style="min-width:170px"><label>สายงาน</label><select onchange="qLn=this.value;qF='all';qSet='';render()">
+   <option value="">ทุกสายงาน</option>${LNSof(qTr).map(l=>`<option value="${l.id}" ${qLn===l.id?'selected':''}>${esc(l.name)}</option>`).join('')}</select></div>`}
+  <div style="min-width:185px"><label>วิชา</label><select onchange="qF=this.value;qSet='';render()">
+   <option value="all">ทุกวิชา</option>${subs.map(s=>`<option value="${s.id}" ${qF===s.id?'selected':''}>${esc(s.short)} — ${esc(s.name).slice(0,28)} (${D.questions.filter(q=>q.subj===s.id).length})</option>`).join('')}</select></div>
+  ${setList.length?`<div style="min-width:120px"><label>ชุดที่</label><select onchange="qSet=this.value;render()">
+   <option value="">ทุกชุด</option>${setList.map(x=>`<option value="${esc(x)}" ${qSet===x?'selected':''}>ชุด ${esc(x)}</option>`).join('')}</select></div>`:''}
+  <div style="flex:1;min-width:150px"><label>ค้นหา</label><input id="qs" value="${esc(qS)}" oninput="qS=this.value;rk('qs')"></div>
+  <button class="btn btn-p" onclick="qEd('',${oldMode?1:0})">+ เพิ่มข้อสอบ</button>
+  <button class="btn btn-d" onclick="qBk(${oldMode?1:0})">⬆ นำเข้าทั้งชุด</button>
+  <button class="btn btn-o" onclick="const n=dedupe();save();render();toast(n?('ลบข้อซ้ำ '+n+' ข้อ'):'ไม่พบข้อซ้ำ')">ตัดข้อซ้ำ</button></div></div>
+ <div class="card"><div class="tw"><table>
+ <tr><th style="width:36px">#</th><th>โจทย์</th><th style="width:110px">วิชา</th><th style="width:54px">ชุด</th><th style="width:74px">ระดับ</th><th style="width:46px">เฉลย</th><th style="width:130px">จัดการ</th></tr>
+ ${L.map((q,i)=>`<tr><td class="mu">${i+1}</td>
+  <td><div style="font-weight:600">${esc(q.q).slice(0,80)}${q.q.length>80?'…':''}</div>
+  <div class="mu" style="font-size:11.5px">${q.o.map((o,j)=>`${'กขคง'[j]}. ${esc(o)}`).join(' · ').slice(0,92)}…</div></td>
+  <td>${esc(sbj(q.subj).short)}</td><td><span class="chip">${esc(q.set||'1')}</span></td>
+  <td><span class="chip ${q.diff==='e'?'ok':q.diff==='h'?'bad':'w'}">${DL[q.diff]}</span></td>
+  <td><b style="color:var(--ok)">${'กขคง'[q.a]}</b></td>
+  <td><button class="btn btn-o btn-s" onclick="qEd('${q.id}',${oldMode?1:0})">แก้</button>
+  <button class="btn btn-o btn-s" onclick="qTg('${q.id}')">${q.active?'ปิด':'เปิด'}</button>
+  <button class="btn btn-r btn-s" onclick="qDl('${q.id}')">ลบ</button></td></tr>`).join('')
+  ||'<tr><td colspan="7" class="mu" style="text-align:center;padding:26px">ไม่พบข้อสอบ</td></tr>'}
+ </table></div></div>`}
+function rk(id){const e=document.getElementById(id),val=e.value,p=e.selectionStart;render();
+ const n=document.getElementById(id);if(n){n.value=val;n.focus();n.setSelectionRange(p,p)}}
+function qEd(id,oldMode){
+ const oldSub=OLDSUB(qTr);
+ const list=oldMode?(oldSub?[oldSub]:[]):(qLn?MOCKSUB(qTr,qLn):D.subjects.filter(s=>s.tr===qTr&&!s.old));
+ if(!list.length)return toast('ไม่พบวิชาในหมวดนี้');
+ const q=id?D.questions.find(x=>x.id===id):{subj:list[0].id,set:qSet||'1',q:'',o:['','','',''],a:0,e:'',diff:'m',active:true};
+ modal(`<h2>${id?'แก้ไขข้อสอบ':'เพิ่มข้อสอบใหม่'} <span class="chip">${oldMode?'ข้อสอบเก่า':'วิชาปกติ'} · สาย${esc(TR(qTr).short)}</span></h2>
+ <label>วิชา</label><select id="fs">${list.map(s=>`<option value="${s.id}" ${q.subj===s.id?'selected':''}>${esc(s.name)}</option>`).join('')}</select>
+ <label>ชุดที่ (พิมพ์เลขชุด เช่น 1, 2, 3 — ข้อสอบในชุดเดียวกันจะถูกจัดเป็นชุดเดียวกันและไม่สุ่ม)</label><input id="fset" value="${esc(q.set||'1')}">
+ <label>โจทย์</label><textarea id="fq">${esc(q.q)}</textarea>
+ ${[0,1,2,3].map(i=>`<label>ตัวเลือก ${'กขคง'[i]}</label><input id="fo${i}" value="${esc(q.o[i]||'')}">`).join('')}
+ <label>ข้อที่ถูกต้อง</label><select id="fa">${[0,1,2,3].map(i=>`<option value="${i}" ${q.a===i?'selected':''}>ตัวเลือก ${'กขคง'[i]}</option>`).join('')}</select>
+ <label>ระดับความยาก</label><select id="fd">${['e','m','h'].map(k=>`<option value="${k}" ${q.diff===k?'selected':''}>${DL[k]}</option>`).join('')}</select>
+ <label>คำอธิบายเฉลย</label><textarea id="fe">${esc(q.e)}</textarea>
+ <label><input type="checkbox" id="fc" ${q.active?'checked':''} style="width:auto;margin-right:7px">เปิดใช้งาน</label>
+ <button class="btn btn-p" style="width:100%;margin-top:14px" onclick="qSv('${id||''}')">บันทึก</button>
+ <button class="btn btn-o" style="width:100%;margin-top:8px" onclick="cm()">ยกเลิก</button>`,true)}
+function qSv(id){
+ const o=[0,1,2,3].map(i=>v('fo'+i)),qq=v('fq'),sid=v('fs'),st=v('fset')||'1';
+ if(!qq||o.some(x=>!x))return toast('กรอกโจทย์และตัวเลือกให้ครบ');
+ if(!id&&D.questions.some(x=>qk(x.subj,x.set,x.q)===qk(sid,st,qq)))return toast('มีข้อสอบนี้อยู่แล้วในชุดเดียวกัน');
+ const maxOrd=Math.max(0,...D.questions.filter(x=>x.subj===sid&&x.set===st).map(x=>x.ord||0));
+ const ob={subj:sid,set:st,q:qq,o,a:+v('fa'),e:v('fe'),diff:v('fd')||'m',active:ck('fc')};
+ if(id)Object.assign(D.questions.find(x=>x.id===id),ob);
+ else D.questions.push({id:uid(),ord:maxOrd+1,...ob});
+ save();cm();render();toast('บันทึกแล้ว')}
+function qTg(id){const q=D.questions.find(x=>x.id===id);q.active=!q.active;save();render()}
+function qDl(id){modal(`<h2>ลบข้อสอบ?</h2><p class="mu">กู้คืนไม่ได้</p>
+ <button class="btn btn-r" style="width:100%;margin-top:14px" onclick="D.questions=D.questions.filter(x=>x.id!=='${id}');save();cm();render();toast('ลบแล้ว')">ลบถาวร</button>
+ <button class="btn btn-o" style="width:100%;margin-top:8px" onclick="cm()">ยกเลิก</button>`)}
+function qBk(oldMode){
+ const oldSub=OLDSUB(qTr);
+ const list=oldMode?(oldSub?[oldSub]:[]):(qLn?MOCKSUB(qTr,qLn):D.subjects.filter(s=>s.tr===qTr&&!s.old));
+ if(!list.length)return toast('ไม่พบวิชา');
+ modal(`<h2>นำเข้าข้อสอบทั้งชุด <span class="chip">${oldMode?'ข้อสอบเก่า':'วิชาปกติ'} · สาย${esc(TR(qTr).short)}</span></h2>
+ <label>วิชาปลายทาง</label><select id="bs">${list.map(s=>`<option value="${s.id}">${esc(s.name)}</option>`).join('')}</select>
+ <label>ชุดที่</label><input id="bst" value="1">
+ <p class="mu" style="margin-top:10px">วาง JSON อาร์เรย์ — <code>a</code>=0(ก)1(ข)2(ค)3(ง) · <code>diff</code>=e/m/h · ลำดับข้อจะเรียงตามลำดับใน JSON และคงที่ทุกครั้ง</p>
+ <textarea id="bkj" style="min-height:210px;font-family:monospace;font-size:12.2px">[
+ {"q":"โจทย์ข้อที่ 1?","o":["ก","ข","ค","ง"],"a":2,"e":"คำอธิบายเฉลย","diff":"m"},
+ {"q":"โจทย์ข้อที่ 2?","o":["ก","ข","ค","ง"],"a":0,"e":"คำอธิบายเฉลย","diff":"e"}
+]</textarea>
+ <button class="btn btn-p" style="width:100%;margin-top:14px" onclick="qBkSv()">นำเข้าเป็นชุด</button>
+ <button class="btn btn-o" style="width:100%;margin-top:8px" onclick="cm()">ยกเลิก</button>`,true)}
+function qBkSv(){
+ let a;try{a=JSON.parse(v('bkj'))}catch(e){return toast('รูปแบบ JSON ไม่ถูกต้อง')}
+ if(!Array.isArray(a))return toast('ต้องเป็นอาร์เรย์');
+ const sid=v('bs'),st=v('bst')||'1';
+ let ok=0,dp=0;const seen=new Set(D.questions.map(q=>qk(q.subj,q.set,q.q)));
+ let ord=Math.max(0,...D.questions.filter(x=>x.subj===sid&&x.set===st).map(x=>x.ord||0));
+ a.forEach(x=>{if(!x.q||!Array.isArray(x.o)||x.o.length!==4)return;
+  const k=qk(sid,st,x.q);if(seen.has(k)){dp++;return}seen.add(k);ord++;
+  D.questions.push({id:uid(),subj:sid,set:st,ord,q:x.q,o:x.o,a:+x.a||0,e:x.e||'',diff:['e','m','h'].includes(x.diff)?x.diff:'m',active:true});ok++});
+ save();cm();render();toast(`นำเข้า ${ok} ข้อ เข้าชุดที่ ${st} · ข้ามซ้ำ ${dp} ข้อ`)}
+/* ---- บทเรียน / สื่อ / วันสอบ / หนังสือ / แพ็กเกจ / ตั้งค่า / สำรอง ---- */
+function aL(){
+ return `<div class="card" style="margin-bottom:14px"><button class="btn btn-p" onclick="lEd()">+ เพิ่มบทเรียน</button></div>
+ <div class="card"><div class="tw"><table><tr><th>บทเรียน</th><th style="width:180px">สาย/วิชา</th><th style="width:76px">สิทธิ์</th><th style="width:118px">จัดการ</th></tr>
+ ${D.lessons.map(l=>`<tr><td><b>${esc(l.t)}</b></td><td>${esc(TR(l.tr).short)} / ${esc(sbj(l.subj).short)}</td>
+  <td><span class="chip ${l.free?'ok':'w'}">${l.free?'ฟรี':'สมาชิก'}</span></td>
+  <td><button class="btn btn-o btn-s" onclick="lEd('${l.id}')">แก้ไข</button>
+  <button class="btn btn-r btn-s" onclick="D.lessons=D.lessons.filter(x=>x.id!=='${l.id}');save();render()">ลบ</button></td></tr>`).join('')
+  ||'<tr><td colspan="4" class="mu" style="text-align:center;padding:24px">ยังไม่มีบทเรียน</td></tr>'}
+ </table></div></div>`}
+function lEd(id){const l=id?D.lessons.find(x=>x.id===id):{subj:D.subjects[0].id,t:'',b:'',free:false};
+ modal(`<h2>${id?'แก้ไขบทเรียน':'เพิ่มบทเรียน'}</h2>
+ <label>วิชา</label><select id="ls">${D.subjects.map(s=>`<option value="${s.id}" ${l.subj===s.id?'selected':''}>[${esc(TR(s.tr).short)}] ${esc(s.name)}</option>`).join('')}</select>
+ <label>ชื่อบทเรียน</label><input id="lt" value="${esc(l.t)}">
+ <label>เนื้อหาสรุป</label><textarea id="lb" style="min-height:180px">${esc(l.b)}</textarea>
+ <label><input type="checkbox" id="lf" ${l.free?'checked':''} style="width:auto;margin-right:7px">เปิดให้อ่านฟรี</label>
+ <button class="btn btn-p" style="width:100%;margin-top:14px" onclick="lSv('${id||''}')">บันทึก</button>
+ <button class="btn btn-o" style="width:100%;margin-top:8px" onclick="cm()">ยกเลิก</button>`,true)}
+function lSv(id){const sid=v('ls');
+ const o={tr:sbj(sid).tr,subj:sid,t:v('lt'),b:document.getElementById('lb').value,free:ck('lf')};
+ if(!o.t)return toast('กรอกชื่อบทเรียน');
+ if(id)Object.assign(D.lessons.find(x=>x.id===id),o);else D.lessons.push({id:uid(),...o});
+ save();cm();render();toast('บันทึกแล้ว')}
+let mdTmp='';
+function aMd(){
+ return `<div class="card" style="margin-bottom:14px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px">
+  <div><h2 style="margin:0">สื่อหน้าแรก (${D.settings.media.length})</h2><span class="mu">สไลด์เปลี่ยนอัตโนมัติทุก 5 วินาที แล้ววนกลับมาเริ่มใหม่</span></div>
+  <button class="btn btn-p" onclick="mdEd()">+ เพิ่มสื่อ</button></div>
+ <div class="grid g2">${D.settings.media.map((m,i)=>`<div class="card">
+  <div style="display:flex;justify-content:space-between;align-items:center"><b>ลำดับที่ ${i+1}</b><span class="chip">${esc(m.type)}</span></div>
+  ${m.type==='image'&&m.url?`<img src="${esc(m.url)}" style="width:100%;border-radius:11px;margin-top:10px;aspect-ratio:16/9;object-fit:cover" alt="">`:''}
+  <h3 style="margin-top:10px">${esc(m.title||'(ไม่มีหัวข้อ)')}</h3><div class="mu" style="font-size:12.5px">${esc(m.sub||'')}</div>
+  <div style="margin-top:11px;display:flex;gap:7px;flex-wrap:wrap">
+   <button class="btn btn-o btn-s" onclick="mdEd('${m.id}')">แก้ไข</button>
+   <button class="btn btn-o btn-s" onclick="mdMove('${m.id}',-1)" ${i===0?'disabled':''}>↑</button>
+   <button class="btn btn-o btn-s" onclick="mdMove('${m.id}',1)" ${i===D.settings.media.length-1?'disabled':''}>↓</button>
+   <button class="btn btn-r btn-s" onclick="D.settings.media=D.settings.media.filter(x=>x.id!=='${m.id}');save();render()">ลบ</button></div></div>`).join('')
+  ||'<div class="card mu">ยังไม่มีสื่อ</div>'}</div>`}
+function mdMove(id,d){const a=D.settings.media,i=a.findIndex(x=>x.id===id),j=i+d;
+ if(j<0||j>=a.length)return;[a[i],a[j]]=[a[j],a[i]];save();render()}
+function mdEd(id){const m=id?D.settings.media.find(x=>x.id===id):{id:uid(),type:'image',url:'',title:'',sub:''};mdTmp='';
+ modal(`<h2>${id?'แก้ไขสื่อ':'เพิ่มสื่อ'}</h2>
+ <label>ประเภท</label><select id="mt" onchange="document.getElementById('mb').innerHTML=mdBox(this.value,'')">
+  <option value="image" ${m.type==='image'?'selected':''}>รูปภาพ</option>
+  <option value="video" ${m.type==='video'?'selected':''}>วิดีโอ (mp4)</option>
+  <option value="youtube" ${m.type==='youtube'?'selected':''}>YouTube</option>
+  <option value="none" ${m.type==='none'?'selected':''}>พื้นสี</option></select>
+ <div id="mb" style="margin-top:10px">${mdBox(m.type,m.url)}</div>
+ <label>หัวข้อ</label><input id="mti" value="${esc(m.title||'')}">
+ <label>คำโปรย</label><textarea id="msu" style="min-height:60px">${esc(m.sub||'')}</textarea>
+ <button class="btn btn-p" style="width:100%;margin-top:14px" onclick="mdSv('${m.id}','${id?'1':''}')">บันทึก</button>
+ <button class="btn btn-o" style="width:100%;margin-top:8px" onclick="cm()">ยกเลิก</button>`)}
+function mdBox(t,u){
+ if(t==='image')return `<label>อัปโหลดรูป (≤2 MB)</label><input type="file" accept="image/*" onchange="mdUp(this,2)"><label>หรือวางลิงก์</label><input id="mu" value="${u&&!u.startsWith('data:')?esc(u):''}">`;
+ if(t==='video')return `<label>อัปโหลดวิดีโอ (≤3 MB)</label><input type="file" accept="video/*" onchange="mdUp(this,3)"><label>หรือวางลิงก์</label><input id="mu" value="${u&&!u.startsWith('data:')?esc(u):''}">`;
+ if(t==='youtube')return `<label>YouTube Video ID</label><input id="mu" value="${esc(u||'')}" placeholder="dQw4w9WgXcQ">`;
+ return '<div class="mu">แสดงเป็นพื้นสีพร้อมข้อความ</div>'}
+function mdUp(el,lim){const f=el.files[0];if(!f)return;
+ if(f.size>lim*1024*1024)return toast(`ไฟล์ใหญ่เกิน ${lim} MB`);
+ const r=new FileReader();r.onload=()=>{mdTmp=r.result;toast('อัปโหลดแล้ว กดบันทึกเพื่อยืนยัน')};r.readAsDataURL(f)}
+function mdSv(id,edit){
+ const t=v('mt'),ui=document.getElementById('mu'),old=D.settings.media.find(x=>x.id===id);
+ let url=mdTmp||(ui?ui.value.trim():'');if(!url&&old)url=old.url;
+ const o={id,type:t,url,title:v('mti'),sub:document.getElementById('msu').value};
+ if(edit&&old)Object.assign(old,o);else D.settings.media.push(o);
+ save();cm();render();toast('บันทึกแล้ว');mdTmp=''}
+function aCd(){
+ return `<div class="card" style="margin-bottom:14px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px">
+  <div><h2 style="margin:0">วันสอบ & นับถอยหลัง</h2><span class="mu">ไม่ใส่วันที่ = ไม่แสดงบนหน้าแรก</span></div>
+  <button class="btn btn-p" onclick="cdEd()">+ เพิ่มวันสอบ</button></div>
+ <div class="card"><div class="tw"><table>
+ <tr><th>ชื่อรายการสอบ</th><th style="width:110px">สาย</th><th style="width:170px">สายงาน</th><th style="width:170px">วันที่สอบ</th><th style="width:116px">จัดการ</th></tr>
+ ${D.exams.map(e=>`<tr><td><b>${esc(e.name)}</b></td><td>${esc(TR(e.tr).short)}</td>
+  <td>${e.ln?esc(LN(e.ln)?.name||'-'):'<span class="mu">ทุกสายงาน</span>'}</td>
+  <td>${e.date?thF(e.date):'<span class="chip bad">ยังไม่กำหนด</span>'}</td>
+  <td><button class="btn btn-o btn-s" onclick="cdEd('${e.id}')">แก้</button>
+  <button class="btn btn-r btn-s" onclick="D.exams=D.exams.filter(x=>x.id!=='${e.id}');save();render()">ลบ</button></td></tr>`).join('')
+  ||'<tr><td colspan="5" class="mu" style="text-align:center;padding:24px">ยังไม่มีรายการสอบ</td></tr>'}
+ </table></div></div>`}
+function cdEd(id){const e=id?D.exams.find(x=>x.id===id):{id:uid(),tr:'sg',ln:'',name:'',date:''};
+ modal(`<h2>${id?'แก้ไขวันสอบ':'เพิ่มวันสอบ'}</h2>
+ <label>ชื่อรายการสอบ</label><input id="en" value="${esc(e.name)}" placeholder="สอบข้อเขียน นายสิบตำรวจ 2569">
+ <label>สายสอบ</label><select id="et" onchange="cdLn()">${D.tracks.map(t=>`<option value="${t.id}" ${e.tr===t.id?'selected':''}>${esc(t.name)}</option>`).join('')}</select>
+ <label>สายงาน</label><select id="el">${['<option value="">— ทุกสายงาน —</option>'].concat(LNSof(e.tr).map(l=>`<option value="${l.id}" ${e.ln===l.id?'selected':''}>${esc(l.name)}</option>`)).join('')}</select>
+ <label>วันและเวลาสอบ</label><input id="ed" type="datetime-local" value="${e.date?e.date.slice(0,16):''}">
+ <button class="btn btn-p" style="width:100%;margin-top:14px" onclick="cdSv('${e.id}','${id?'1':''}')">บันทึก</button>
+ <button class="btn btn-o" style="width:100%;margin-top:8px" onclick="cm()">ยกเลิก</button>`)}
+function cdLn(){document.getElementById('el').innerHTML=['<option value="">— ทุกสายงาน —</option>'].concat(LNSof(v('et')).map(l=>`<option value="${l.id}">${esc(l.name)}</option>`)).join('')}
+function cdSv(id,edit){const o={id,tr:v('et'),ln:v('el'),name:v('en'),date:v('ed')};
+ if(!o.name)return toast('กรอกชื่อรายการสอบ');
+ const old=D.exams.find(x=>x.id===id);if(edit&&old)Object.assign(old,o);else D.exams.push(o);
+ save();cm();render();toast('บันทึกแล้ว')}
+let bkTmp='';
+function aBk(){
+ return `<div class="card" style="margin-bottom:14px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px">
+  <div><h2 style="margin:0">หนังสือแนะนำ (${D.books.length})</h2><span class="mu">ไม่มีหนังสือ = ไม่แสดงส่วนนี้บนหน้าเว็บ</span></div>
+  <button class="btn btn-p" onclick="bkEd()">+ เพิ่มหนังสือ</button></div>
+ <div class="grid g2">${D.books.map(b=>`<div class="card"><div style="display:flex;gap:12px">
+  ${b.img?`<img src="${esc(b.img)}" style="width:70px;height:94px;object-fit:cover;border-radius:8px" alt="">`:`<div style="width:70px;height:94px;border-radius:8px;background:var(--lt2);display:grid;place-items:center">${IC('book',32)}</div>`}
+  <div style="flex:1"><h4 style="color:var(--br);font-weight:800">${esc(b.t)}</h4>
+  <div class="mu" style="font-size:12.5px">${esc(b.d)}</div>
+  <div style="margin-top:9px"><button class="btn btn-o btn-s" onclick="bkEd('${b.id}')">แก้ไข</button>
+  <button class="btn btn-r btn-s" onclick="D.books=D.books.filter(x=>x.id!=='${b.id}');save();render()">ลบ</button></div></div></div></div>`).join('')
+  ||'<div class="card mu">ยังไม่มีหนังสือแนะนำ</div>'}</div>`}
+function bkEd(id){const b=id?D.books.find(x=>x.id===id):{id:uid(),t:'',d:'',img:'',link:''};bkTmp='';
+ modal(`<h2>${id?'แก้ไขหนังสือ':'เพิ่มหนังสือ'}</h2>
+ <label>ชื่อหนังสือ</label><input id="bt" value="${esc(b.t)}">
+ <label>คำแนะนำ / คำบรรยาย</label><textarea id="bd" style="min-height:70px">${esc(b.d)}</textarea>
+ <label>ภาพปก — อัปโหลด (≤1 MB)</label><input type="file" accept="image/*" onchange="bkUp(this)">
+ <label>หรือวางลิงก์ภาพปก</label><input id="bi" value="${b.img&&!b.img.startsWith('data:')?esc(b.img):''}">
+ <label>ลิงก์ปลายทางเมื่อกด</label><input id="bl" value="${esc(b.link||'')}">
+ <button class="btn btn-p" style="width:100%;margin-top:14px" onclick="bkSv('${b.id}','${id?'1':''}')">บันทึก</button>
+ <button class="btn btn-o" style="width:100%;margin-top:8px" onclick="cm()">ยกเลิก</button>`)}
+function bkUp(el){const f=el.files[0];if(!f)return;if(f.size>1024*1024)return toast('รูปใหญ่เกิน 1 MB');
+ const r=new FileReader();r.onload=()=>{bkTmp=r.result;toast('อัปโหลดปกแล้ว')};r.readAsDataURL(f)}
+function bkSv(id,edit){const old=D.books.find(x=>x.id===id);
+ const o={id,t:v('bt'),d:document.getElementById('bd').value,img:bkTmp||v('bi')||(old?old.img:''),link:v('bl')};
+ if(!o.t)return toast('กรอกชื่อหนังสือ');
+ if(edit&&old)Object.assign(old,o);else D.books.push(o);
+ save();cm();render();toast('บันทึกแล้ว');bkTmp=''}
+function aPm(){
+ return `<div class="grid g2">
+ <div class="card"><div style="display:flex;justify-content:space-between;align-items:center"><h2 style="margin:0">แพ็กเกจและราคา</h2>
+  <button class="btn btn-p btn-s" onclick="pmEd()">+ เพิ่ม</button></div>
+  <div class="tw" style="margin-top:12px"><table><tr><th>แพ็กเกจ</th><th style="width:72px">สาย</th><th style="width:88px">ราคาเต็ม</th><th style="width:88px">ราคาลด</th><th style="width:108px"></th></tr>
+  ${D.promos.map(p=>`<tr><td><b>${esc(p.title)}</b>${p.best?' <span class="chip w">แนะนำ</span>':''}</td>
+   <td>${esc(TR(p.tr).short)}</td><td class="mu" style="text-decoration:line-through">฿${nf(p.old)}</td><td><b style="color:var(--br)">฿${nf(p.price)}</b></td>
+   <td><button class="btn btn-o btn-s" onclick="pmEd('${p.id}')">แก้</button>
+   <button class="btn btn-r btn-s" onclick="D.promos=D.promos.filter(x=>x.id!=='${p.id}');save();render()">ลบ</button></td></tr>`).join('')}
+  </table></div></div>
+ <div class="card"><div style="display:flex;justify-content:space-between;align-items:center"><h2 style="margin:0">โค้ดส่วนลด</h2>
+  <button class="btn btn-p btn-s" onclick="cpEd()">+ เพิ่มโค้ด</button></div>
+  <div class="tw" style="margin-top:12px"><table><tr><th>โค้ด</th><th style="width:110px">ส่วนลด</th><th>หมายเหตุ</th><th style="width:92px"></th></tr>
+  ${D.coupons.map(c=>`<tr><td><b>${esc(c.code)}</b></td><td><span class="chip ok">${c.type==='pct'?c.val+'%':'฿'+nf(c.val)}</span></td>
+   <td class="mu">${esc(c.note||'')}</td>
+   <td><button class="btn btn-o btn-s" onclick="cpEd('${c.id}')">แก้</button>
+   <button class="btn btn-r btn-s" onclick="D.coupons=D.coupons.filter(x=>x.id!=='${c.id}');save();render()">ลบ</button></td></tr>`).join('')}
+  </table></div>
+  <h2 style="margin-top:22px">บัญชีรับโอนเงิน</h2>
+  <label>ธนาคาร</label><input id="bkb" value="${esc(D.settings.bank.bank)}">
+  <label>เลขที่บัญชี</label><input id="bka" value="${esc(D.settings.bank.acc)}">
+  <label>ชื่อบัญชี</label><input id="bkn" value="${esc(D.settings.bank.name)}">
+  <button class="btn btn-p" style="width:100%;margin-top:13px" onclick="D.settings.bank={bank:v('bkb'),acc:v('bka'),name:v('bkn')};save();render();toast('บันทึกบัญชีแล้ว')">บันทึกบัญชี</button></div></div>`}
+function pmEd(id){const p=id?D.promos.find(x=>x.id===id):{id:uid(),tr:'sg',per:'m',title:'',old:0,price:0,best:0,feat:[]};
+ modal(`<h2>${id?'แก้ไขแพ็กเกจ':'เพิ่มแพ็กเกจ'}</h2>
+ <label>สายสอบ</label><select id="pt">${D.tracks.map(t=>`<option value="${t.id}" ${p.tr===t.id?'selected':''}>${esc(t.name)}</option>`).join('')}</select>
+ <label>รอบการชำระ</label><select id="pp"><option value="m" ${p.per==='m'?'selected':''}>รายเดือน (30 วัน)</option><option value="y" ${p.per==='y'?'selected':''}>รายปี (365 วัน)</option></select>
+ <label>ชื่อแพ็กเกจ</label><input id="ptt" value="${esc(p.title)}">
+ <div class="row2"><div><label>ราคาเต็ม</label><input id="pol" type="number" value="${p.old}"></div>
+ <div><label>ราคาที่ลดแล้ว</label><input id="ppr" type="number" value="${p.price}"></div></div>
+ <label>สิ่งที่ได้รับ (บรรทัดละ 1 ข้อ)</label><textarea id="pf" style="min-height:100px">${esc((p.feat||[]).join('\n'))}</textarea>
+ <label><input type="checkbox" id="pb" ${p.best?'checked':''} style="width:auto;margin-right:7px">ติดป้าย "คุ้มที่สุด"</label>
+ <button class="btn btn-p" style="width:100%;margin-top:14px" onclick="pmSv('${p.id}','${id?'1':''}')">บันทึก</button>
+ <button class="btn btn-o" style="width:100%;margin-top:8px" onclick="cm()">ยกเลิก</button>`)}
+function pmSv(id,edit){
+ const o={id,tr:v('pt'),per:v('pp'),title:v('ptt'),old:+v('pol')||0,price:+v('ppr')||0,best:ck('pb')?1:0,
+  feat:document.getElementById('pf').value.split('\n').map(x=>x.trim()).filter(Boolean)};
+ if(!o.title)return toast('กรอกชื่อแพ็กเกจ');
+ const old=D.promos.find(x=>x.id===id);if(edit&&old)Object.assign(old,o);else D.promos.push(o);
+ save();cm();render();toast('บันทึกแล้ว')}
+function cpEd(id){const c=id?D.coupons.find(x=>x.id===id):{id:uid(),code:'',type:'baht',val:0,note:''};
+ modal(`<h2>${id?'แก้ไขโค้ด':'เพิ่มโค้ดส่วนลด'}</h2>
+ <label>โค้ด (ตัวพิมพ์ใหญ่)</label><input id="cc" value="${esc(c.code)}">
+ <label>ประเภทส่วนลด</label><select id="cty"><option value="baht" ${c.type==='baht'?'selected':''}>ลดเป็นบาท</option><option value="pct" ${c.type==='pct'?'selected':''}>ลดเป็นเปอร์เซ็นต์</option></select>
+ <label>จำนวนที่ลด</label><input id="cv" type="number" value="${c.val}">
+ <label>หมายเหตุ</label><input id="cn" value="${esc(c.note||'')}">
+ <button class="btn btn-p" style="width:100%;margin-top:14px" onclick="cpSv('${c.id}','${id?'1':''}')">บันทึก</button>
+ <button class="btn btn-o" style="width:100%;margin-top:8px" onclick="cm()">ยกเลิก</button>`)}
+function cpSv(id,edit){const o={id,code:v('cc').toUpperCase(),type:v('cty'),val:+v('cv')||0,note:v('cn')};
+ if(!o.code)return toast('กรอกโค้ด');
+ const old=D.coupons.find(x=>x.id===id);if(edit&&old)Object.assign(old,o);else D.coupons.push(o);
+ save();cm();render();toast('บันทึกแล้ว')}
+function aSet(){const s=D.settings,t=s.theme,soc=s.social;
+ return `<div class="grid g2">
+ <div class="card"><h2>ข้อความและหน้าตาเว็บ</h2>
+  <label>ชื่อเว็บ</label><input id="gN" value="${esc(s.appName)}">
+  <label>แถบประกาศด้านบนสุด</label><input id="gTB" value="${esc(s.topbar||'')}">
+  <label>Kicker (ข้อความเล็กเหนือหัวเรื่อง)</label><input id="gTag" value="${esc(s.tagline)}">
+  <label>หัวเรื่องหน้าแรก</label><input id="gHT" value="${esc(s.heroTitle)}">
+  <label>คำโปรยหน้าแรก</label><textarea id="gHS">${esc(s.heroSub)}</textarea>
+  <label>ช่องทางติดต่อ (ท้ายเว็บ)</label><input id="gC" value="${esc(s.contact)}">
+  <label>หน่วยที่นั่งเขียนสอบ (ใบผลสอบ)</label><input id="gR" value="${esc(s.examRoom)}">
+  <label>ข้อความหัวกระดาษคำตอบ</label><input id="gO" value="${esc(s.omrTitle)}">
+  <label>สีหลัก (ส้มอิฐ)</label><div class="sw"><input type="color" id="c1" value="${t.main}"><input value="${t.main}" id="c1t" oninput="document.getElementById('c1').value=this.value"></div>
+  <label>สีเน้น</label><div class="sw"><input type="color" id="c2" value="${t.accent}"><input value="${t.accent}" id="c2t" oninput="document.getElementById('c2').value=this.value"></div>
+  <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:11px">
+   <button class="btn btn-o btn-s" onclick="preset('#c2410c','#ea580c')">ส้มอิฐคลาสสิก</button>
+   <button class="btn btn-o btn-s" onclick="preset('#9a3412','#f97316')">ส้มเข้มหรู</button>
+   <button class="btn btn-o btn-s" onclick="preset('#b45309','#f59e0b')">ส้มทอง</button></div>
+  <button class="btn btn-p" style="width:100%;margin-top:15px" onclick="setSave()">บันทึกการตั้งค่า</button></div>
+ <div class="card"><h2>ลิงก์โซเชียล (ท้ายทุกหน้า)</h2>
+  <label>Facebook</label><input id="soFb" value="${esc(soc.fb)}">
+  <label>TikTok</label><input id="soTt" value="${esc(soc.tt)}">
+  <label>LINE</label><input id="soLn" value="${esc(soc.line)}">
+  <button class="btn btn-d" style="width:100%;margin-top:13px" onclick="D.settings.social={fb:v('soFb'),tt:v('soTt'),line:v('soLn')};save();render();toast('บันทึกลิงก์แล้ว')">บันทึกลิงก์</button>
+  <h2 style="margin-top:22px">ตัวเลขความน่าเชื่อถือ</h2>
+  <label>บวกเพิ่มจากค่าจริง</label><input id="gB" type="number" value="${s.boost}">
+  <h2 style="margin-top:20px">สิทธิ์ทดลองใช้ฟรี</h2>
+  <div class="row2"><div><label>ชุดต่อวัน</label><input id="fS" type="number" value="${s.freeSet}"></div>
+  <div><label>ข้อต่อชุด</label><input id="fQ" type="number" value="${s.freeQ}"></div></div>
+  <h2 style="margin-top:20px">สัดส่วนสุ่มยากง่าย (ใช้กับชุดสุ่มและสนามจำลอง)</h2>
+  <div class="row2"><div><label>ง่าย %</label><input id="mE" type="number" value="${s.mix.e}"></div>
+  <div><label>กลาง %</label><input id="mM" type="number" value="${s.mix.m}"></div>
+  <div><label>ยาก %</label><input id="mH" type="number" value="${s.mix.h}"></div></div>
+  <button class="btn btn-d" style="width:100%;margin-top:13px" onclick="misc()">บันทึกค่าเหล่านี้</button></div>
+ <div class="card"><h2>สายสอบและเกณฑ์</h2>
+  ${D.tracks.map((t2,i)=>`<div style="border:1.5px solid var(--bd);border-radius:12px;padding:13px;margin-bottom:12px">
+   <div style="display:flex;align-items:center;gap:10px">${IC(t2.icon,30)}<b>${esc(t2.name)}</b></div>
+   <div class="row2"><div><label>เวลาสอบ (นาที)</label><input id="tm${i}" type="number" value="${t2.min}"></div>
+   <div><label>ตัวจริง %</label><input id="tp${i}" type="number" value="${t2.pass}"></div>
+   <div><label>ตัวสำรอง %</label><input id="tv${i}" type="number" value="${t2.res}"></div></div>
+   <div style="margin-top:9px">${LNSof(t2.id).map(l=>`<span class="chip">${esc(l.name)} · ${TOT(t2.id,l.id)} ข้อ</span>`).join('')}</div></div>`).join('')}
+  <button class="btn btn-p" style="width:100%" onclick="trSv()">บันทึกเกณฑ์สายสอบ</button></div>
+ <div class="card"><h2>จำนวนข้อรายวิชา (สนามจำลอง)</h2>
+  <div class="tw"><table><tr><th style="width:64px">สาย</th><th style="width:130px">สายงาน</th><th>วิชา</th><th style="width:46px">กลุ่ม</th><th style="width:60px">ข้อ</th></tr>
+  ${D.subjects.filter(s2=>!s2.old).map((x,i)=>`<tr><td>${esc(TR(x.tr).short)}</td><td class="mu" style="font-size:12px">${esc(LN(x.ln)?.name||'')}</td>
+   <td><input id="vn${i}" value="${esc(x.name)}"></td>
+   <td><select id="vg${i}"><option ${x.grp==='A'?'selected':''}>A</option><option ${x.grp==='B'?'selected':''}>B</option></select></td>
+   <td><input id="vq${i}" type="number" value="${x.n}"></td></tr>`).join('')}
+  </table></div>
+  <button class="btn btn-d" style="width:100%;margin-top:12px" onclick="sjSv()">บันทึกวิชา</button></div></div>`}
+function preset(a,b){document.getElementById('c1').value=a;document.getElementById('c1t').value=a;
+ document.getElementById('c2').value=b;document.getElementById('c2t').value=b;
+ D.settings.theme={main:a,accent:b};save();applyTheme();toast('เปลี่ยนชุดสีแล้ว — กดบันทึกเพื่อยืนยัน')}
+function setSave(){const s=D.settings;
+ s.appName=v('gN')||s.appName;s.topbar=v('gTB');s.tagline=v('gTag');s.heroTitle=v('gHT');
+ s.heroSub=document.getElementById('gHS').value;s.contact=v('gC');s.examRoom=v('gR')||'นายฮ้อย';s.omrTitle=v('gO')||'กระดาษคำตอบ';
+ s.theme={main:document.getElementById('c1').value,accent:document.getElementById('c2').value};
+ save();applyTheme();render();toast('บันทึกแล้ว')}
+function misc(){const s=D.settings;
+ s.boost=+v('gB')||0;s.freeSet=+v('fS')||1;s.freeQ=+v('fQ')||10;
+ s.mix={e:+v('mE')||0,m:+v('mM')||0,h:+v('mH')||0};save();render();toast('บันทึกแล้ว')}
+function trSv(){D.tracks.forEach((t,i)=>{t.min=+v('tm'+i)||180;t.pass=+v('tp'+i)||80;t.res=+v('tv'+i)||60});
+ save();render();toast('บันทึกแล้ว')}
+function sjSv(){D.subjects.filter(s=>!s.old).forEach((x,i)=>{x.name=v('vn'+i)||x.name;x.grp=v('vg'+i);x.n=+v('vq'+i)||0});
+ save();render();toast('บันทึกวิชาแล้ว')}
+function aB(){
+ return `<div class="grid g2">
+ <div class="card"><h2>สำรองข้อมูล</h2><p class="mu">ดาวน์โหลดทั้งระบบเป็นไฟล์ JSON</p>
+  <button class="btn btn-p" style="width:100%;margin-top:12px" onclick="exAll()">ดาวน์โหลดไฟล์สำรอง</button>
+  <button class="btn btn-o" style="width:100%;margin-top:8px" onclick="exQ()">ส่งออกเฉพาะคลังข้อสอบ</button>
+  <button class="btn btn-o" style="width:100%;margin-top:8px" onclick="exU()">ส่งออกรายชื่อสมาชิก (CSV)</button></div>
+ <div class="card"><h2>กู้คืนข้อมูล</h2><p class="mu"><b style="color:var(--bad)">ข้อมูลปัจจุบันจะถูกเขียนทับทั้งหมด</b></p>
+  <input type="file" accept="application/json" id="imf" style="margin-top:12px">
+  <button class="btn btn-d" style="width:100%;margin-top:10px" onclick="imp()">กู้คืน</button>
+  <hr style="margin:18px 0;border:0;border-top:1px solid var(--bd)">
+  <button class="btn btn-r" style="width:100%" onclick="rst()">ล้างข้อมูลทั้งหมด</button></div></div>
+ <div class="card" style="margin-top:16px"><h2>สรุปข้อมูล</h2>
+  <span class="chip">สมาชิก ${D.users.length}</span><span class="chip">ข้อสอบ ${D.questions.length}</span>
+  <span class="chip">ข้อสอบเก่า ${D.questions.filter(q=>sbj(q.subj).old).length}</span>
+  <span class="chip">บทเรียน ${D.lessons.length}</span><span class="chip">สื่อ ${D.settings.media.length}</span>
+  <span class="chip">หนังสือ ${D.books.length}</span>
+  <p class="mu" style="margin-top:10px">ขนาดข้อมูล ~${(JSON.stringify(D).length/1024/1024).toFixed(2)} MB (localStorage จำกัดราว 5 MB)</p></div>`}
+function dl(n,t,ty){const b=new Blob([t],{type:ty||'application/json'});const a=document.createElement('a');a.href=URL.createObjectURL(b);a.download=n;a.click()}
+function exAll(){dl(`naihoi-backup-${tday()}.json`,JSON.stringify(D));toast('ดาวน์โหลดแล้ว')}
+function exQ(){dl(`naihoi-questions-${tday()}.json`,JSON.stringify(D.questions.map(({id,active,...r})=>r),null,1));toast('ส่งออกแล้ว')}
+function exU(){const r=[['รหัส','ชื่อ','สกุล','อีเมล','โทร','วันเกิด','นายสิบหมดอายุ','นายร้อยหมดอายุ']].concat(
+ D.users.filter(u=>u.role!=='admin').map(u=>[u.code||'',u.name,u.sur||'',u.email||'',u.tel||'',u.birth||'',
+  u.access?.sg?.on&&u.access.sg.expire?thD(u.access.sg.expire):'-',
+  u.access?.cd?.on&&u.access.cd.expire?thD(u.access.cd.expire):'-']));
+ dl(`naihoi-members-${tday()}.csv`,'\ufeff'+r.map(x=>x.join(',')).join('\n'),'text/csv');toast('ส่งออกแล้ว')}
+function imp(){const f=document.getElementById('imf').files[0];if(!f)return toast('เลือกไฟล์ก่อน');
+ const r=new FileReader();r.onload=()=>{try{const o=JSON.parse(r.result);if(!o.users||!o.questions)return toast('ไฟล์ไม่ถูกต้อง');
+  D=o;D.session=null;save();location.reload()}catch(e){toast('อ่านไฟล์ไม่สำเร็จ')}};r.readAsText(f)}
+function rst(){modal(`<h2 style="color:var(--bad)">ล้างข้อมูลทั้งหมด?</h2><p class="mu">สมาชิก ข้อสอบ สื่อ ทั้งหมดจะหายถาวร</p>
+ <button class="btn btn-r" style="width:100%;margin-top:14px" onclick="localStorage.removeItem('${KEY}');location.reload()">ยืนยัน</button>
+ <button class="btn btn-o" style="width:100%;margin-top:8px" onclick="cm()">ยกเลิก</button>`)}
+
+/* security: ปิด devtools shortcut เบื้องต้น + กันลากไฟล์ */
+window.addEventListener('dragover',e=>e.preventDefault());
+window.addEventListener('drop',e=>e.preventDefault());
+document.addEventListener('keydown',e=>{if(e.ctrlKey&&e.shiftKey&&e.key==='F12')e.preventDefault()});
+init().then(render);
+</script>
+</body>
+</html>
